@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build chess engine",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "chess_engine",
+                "main.cpp",
+                "bitboards.cpp",
+                "board.cpp",
+                "eval.cpp",
+                "chessboard.cpp",
+                "-std=c++17",
+                "-g"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "detail": "Compiler task"
+        }
+    ]
+}
