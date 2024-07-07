@@ -7,20 +7,24 @@
             "command": "g++",
             "args": [
                 "-o",
-                "chess_engine",
-                "main.cpp",
-                "bitboards.cpp",
-                "board.cpp",
-                "eval.cpp",
-                "chessboard.cpp",
+                "${workspaceFolder}/Engine/build/chess_engine.exe",
+                "${workspaceFolder}/Engine/src/main.cpp",
+                "${workspaceFolder}/Engine/src/bitboards.cpp",
+                "${workspaceFolder}/Engine/src/chessboard.cpp",
+                "${workspaceFolder}/Engine/src/wrapper.cpp",
                 "-std=c++17",
-                "-g"
+                "-g",
+                "-shared",
+                "-fPIC",
+                "-I${workspaceFolder}/Engine/include",
+                "-I${command:python.interpreterPath}/include",
+                "-I${command:python.interpreterPath}/Lib/site-packages/pybind11/include"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": "$gcc",
+            "problemMatcher": ["$gcc"],
             "detail": "Compiler task"
         }
     ]

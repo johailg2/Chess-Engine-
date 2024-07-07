@@ -1,0 +1,988 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22631 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.6.3+07e294721 for .NET Framework
+      Build started 6/19/2024 1:02:34 PM.
+      
+      Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\3.30.0-rc3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Creating directory "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\3.30.0-rc3\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Done Building Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\3.30.0-rc3\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:00.92
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/3.30.0-rc3/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.6.3+07e294721 for .NET Framework
+      Build started 6/19/2024 1:02:35 PM.
+      
+      Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\3.30.0-rc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Creating directory "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\3.30.0-rc3\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Done Building Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\3.30.0-rc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:00.69
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/3.30.0-rc3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-hn4xtz"
+      binary: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-hn4xtz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-hn4xtz'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3bd8e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Build started 6/19/2024 1:02:36 PM.
+        
+        Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hn4xtz\\cmTC_3bd8e.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_3bd8e.dir\\Debug\\".
+          Creating directory "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hn4xtz\\Debug\\".
+          Creating directory "cmTC_3bd8e.dir\\Debug\\cmTC_3bd8e.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_3bd8e.dir\\Debug\\cmTC_3bd8e.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3bd8e.dir\\Debug\\\\" /Fd"cmTC_3bd8e.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.36.32532 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          CMakeCCompilerABI.c
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3bd8e.dir\\Debug\\\\" /Fd"cmTC_3bd8e.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hn4xtz\\Debug\\cmTC_3bd8e.exe" /INCREMENTAL /ILK:"cmTC_3bd8e.dir\\Debug\\cmTC_3bd8e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-hn4xtz/Debug/cmTC_3bd8e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-hn4xtz/Debug/cmTC_3bd8e.lib" /MACHINE:X64  /machine:x64 cmTC_3bd8e.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_3bd8e.vcxproj -> C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hn4xtz\\Debug\\cmTC_3bd8e.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_3bd8e.dir\\Debug\\cmTC_3bd8e.tlog\\unsuccessfulbuild".
+          Touching "cmTC_3bd8e.dir\\Debug\\cmTC_3bd8e.tlog\\cmTC_3bd8e.lastbuildstate".
+        Done Building Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hn4xtz\\cmTC_3bd8e.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.66
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.36.32532/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.36.32532/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.36.32532.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-8epfdz"
+      binary: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-8epfdz"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-8epfdz'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_355c2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Build started 6/19/2024 1:02:37 PM.
+        
+        Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8epfdz\\cmTC_355c2.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_355c2.dir\\Debug\\".
+          Creating directory "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8epfdz\\Debug\\".
+          Creating directory "cmTC_355c2.dir\\Debug\\cmTC_355c2.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_355c2.dir\\Debug\\cmTC_355c2.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_355c2.dir\\Debug\\\\" /Fd"cmTC_355c2.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.36.32532 for x64
+          CMakeCXXCompilerABI.cpp
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_355c2.dir\\Debug\\\\" /Fd"cmTC_355c2.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8epfdz\\Debug\\cmTC_355c2.exe" /INCREMENTAL /ILK:"cmTC_355c2.dir\\Debug\\cmTC_355c2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-8epfdz/Debug/cmTC_355c2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-8epfdz/Debug/cmTC_355c2.lib" /MACHINE:X64  /machine:x64 cmTC_355c2.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_355c2.vcxproj -> C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8epfdz\\Debug\\cmTC_355c2.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_355c2.dir\\Debug\\cmTC_355c2.tlog\\unsuccessfulbuild".
+          Touching "cmTC_355c2.dir\\Debug\\cmTC_355c2.tlog\\cmTC_355c2.lastbuildstate".
+        Done Building Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8epfdz\\cmTC_355c2.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.62
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.36.32532/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.36.32532/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.36.32532.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/share/cmake/pybind11/pybind11Common.cmake:287 (check_cxx_compiler_flag)"
+      - "C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/share/cmake/pybind11/pybind11Common.cmake:354 (_pybind11_return_if_cxx_and_linker_flags_work)"
+      - "C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/share/cmake/pybind11/pybind11Common.cmake:399 (_pybind11_generate_lto)"
+      - "C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/share/cmake/pybind11/pybind11Config.cmake:250 (include)"
+      - "CMakeLists.txt:19 (find_package)"
+    checks:
+      - "Performing Test HAS_MSVC_GL_LTCG"
+    directories:
+      source: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-wz87e8"
+      binary: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-wz87e8"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "HAS_MSVC_GL_LTCG"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-wz87e8'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_43a14.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Build started 6/19/2024 1:02:39 PM.
+        
+        Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\cmTC_43a14.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_43a14.dir\\Debug\\".
+          Creating directory "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\Debug\\".
+          Creating directory "cmTC_43a14.dir\\Debug\\cmTC_43a14.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_43a14.dir\\Debug\\cmTC_43a14.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_43a14.dir\\Debug\\\\" /Fd"cmTC_43a14.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\src.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.36.32532 for x64
+          src.cxx
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_43a14.dir\\Debug\\\\" /Fd"cmTC_43a14.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\src.cxx"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\Debug\\cmTC_43a14.exe" /INCREMENTAL /ILK:"cmTC_43a14.dir\\Debug\\cmTC_43a14.ilk" /NOLOGO "-LTCG" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-wz87e8/Debug/cmTC_43a14.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-wz87e8/Debug/cmTC_43a14.lib" /MACHINE:X64  /machine:x64 cmTC_43a14.dir\\Debug\\src.obj
+        LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\cmTC_43a14.vcxproj]
+          Generating code
+          Finished generating code
+          cmTC_43a14.vcxproj -> C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\Debug\\cmTC_43a14.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_43a14.dir\\Debug\\cmTC_43a14.tlog\\unsuccessfulbuild".
+          Touching "cmTC_43a14.dir\\Debug\\cmTC_43a14.tlog\\cmTC_43a14.lastbuildstate".
+        Done Building Project "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\cmTC_43a14.vcxproj" (default targets).
+        
+        Build succeeded.
+        
+        "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\cmTC_43a14.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wz87e8\\cmTC_43a14.vcxproj]
+        
+            1 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.65
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22631 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Users/johai/GCC/bin/gcc.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+      
+      The C compiler identification is GNU, found in:
+        C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/3.30.0-rc3/CompilerIdC/a.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/Users/johai/GCC/bin/c++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+      
+      The CXX compiler identification is GNU, found in:
+        C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/3.30.0-rc3/CompilerIdCXX/a.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-ceggws"
+      binary: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-ceggws"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-ceggws'
+        
+        Run Build Command(s): C:/Users/johai/Downloads/ninja-win/ninja.exe -v cmTC_577f3
+        [1/2] C:\\Users\\johai\\GCC\\bin\\gcc.exe   -v -o CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCCompilerABI.c"
+        Using built-in specs.
+        COLLECT_GCC=C:\\Users\\johai\\GCC\\bin\\gcc.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../../../src/gcc-git-10.3.0/configure --build=x86_64-w64-mingw32 --enable-targets=all --enable-languages=ada,c,c++,fortran,jit,lto,objc,obj-c++ --enable-libgomp --enable-lto --enable-graphite --enable-cxx-flags=-DWINPTHREAD_STATIC --disable-build-with-cxx --disable-build-poststage1-with-cxx --enable-libstdcxx-debug --enable-threads=posix --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --enable-libstdcxx-threads --enable-libstdcxx-time=yes --enable-mingw-wildcard --with-gnu-ld --disable-werror --enable-nls --disable-win32-registry --enable-large-address-aware --disable-rpath --disable-symvers --prefix=/mingw64tdm --with-local-prefix=/mingw64tdm --with-pkgversion=tdm64-1 --with-bugurl=https://github.com/jmeubank/tdm-gcc/issues
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 10.3.0 (tdm64-1) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64'
+         C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/cc1.exe -quiet -v -iprefix C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/ -D_REENTRANT C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj -version -o C:\\Users\\johai\\AppData\\Local\\Temp\\ccUUXDTd.s
+        GNU C17 (tdm64-1) version 10.3.0 (x86_64-w64-mingw32)
+        	compiled by GNU C version 10.3.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.23-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include
+        End of search list.
+        GNU C17 (tdm64-1) version 10.3.0 (x86_64-w64-mingw32)
+        	compiled by GNU C version 10.3.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.23-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 68074fcaab9f6b1377b55f7cea05149b
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64'
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj C:\\Users\\johai\\AppData\\Local\\Temp\\ccUUXDTd.s
+        GNU assembler version 2.36.1 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.36.1
+        COMPILER_PATH=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/;C:/Users/johai/GCC/bin/../libexec/gcc/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/;C:/Users/johai/GCC/bin/../lib/gcc/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../\x0d
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64'\x0d
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\johai\\GCC\\bin\\gcc.exe  -v -Wl,-v CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj -o cmTC_577f3.exe -Wl,--out-implib,libcmTC_577f3.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        Using built-in specs.
+        COLLECT_GCC=C:\\Users\\johai\\GCC\\bin\\gcc.exe
+        COLLECT_LTO_WRAPPER=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../../../src/gcc-git-10.3.0/configure --build=x86_64-w64-mingw32 --enable-targets=all --enable-languages=ada,c,c++,fortran,jit,lto,objc,obj-c++ --enable-libgomp --enable-lto --enable-graphite --enable-cxx-flags=-DWINPTHREAD_STATIC --disable-build-with-cxx --disable-build-poststage1-with-cxx --enable-libstdcxx-debug --enable-threads=posix --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --enable-libstdcxx-threads --enable-libstdcxx-time=yes --enable-mingw-wildcard --with-gnu-ld --disable-werror --enable-nls --disable-win32-registry --enable-large-address-aware --disable-rpath --disable-symvers --prefix=/mingw64tdm --with-local-prefix=/mingw64tdm --with-pkgversion=tdm64-1 --with-bugurl=https://github.com/jmeubank/tdm-gcc/issues
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 10.3.0 (tdm64-1) 
+        COMPILER_PATH=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/;C:/Users/johai/GCC/bin/../libexec/gcc/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/;C:/Users/johai/GCC/bin/../lib/gcc/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_577f3.exe' '-mtune=generic' '-march=x86-64'
+         C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/collect2.exe -plugin C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll -plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccD3SdSg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep --exclude-libs=libpthread.a --undefined=__xl_f -Bdynamic -o cmTC_577f3.exe C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0 -LC:/Users/johai/GCC/bin/../lib/gcc -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../.. -v CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_577f3.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o
+        collect2 version 10.3.0
+        C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll -plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccD3SdSg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep --exclude-libs=libpthread.a --undefined=__xl_f -Bdynamic -o cmTC_577f3.exe C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0 -LC:/Users/johai/GCC/bin/../lib/gcc -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../.. -v CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_577f3.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o\x0d
+        GNU ld (GNU Binutils) 2.36.1\x0d
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_577f3.exe' '-mtune=generic' '-march=x86-64'\x0d
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include]
+        end of search list found
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include] ==> [C:/Users/johai/GCC/include]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/include]
+        implicit include dirs: [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include;C:/Users/johai/GCC/include;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed;C:/Users/johai/GCC/x86_64-w64-mingw32/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: 'C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-ceggws']
+        ignore line: []
+        ignore line: [Run Build Command(s): C:/Users/johai/Downloads/ninja-win/ninja.exe -v cmTC_577f3]
+        ignore line: [[1/2] C:\\Users\\johai\\GCC\\bin\\gcc.exe   -v -o CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCCompilerABI.c"]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:\\Users\\johai\\GCC\\bin\\gcc.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../../../src/gcc-git-10.3.0/configure --build=x86_64-w64-mingw32 --enable-targets=all --enable-languages=ada,c,c++,fortran,jit,lto,objc,obj-c++ --enable-libgomp --enable-lto --enable-graphite --enable-cxx-flags=-DWINPTHREAD_STATIC --disable-build-with-cxx --disable-build-poststage1-with-cxx --enable-libstdcxx-debug --enable-threads=posix --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --enable-libstdcxx-threads --enable-libstdcxx-time=yes --enable-mingw-wildcard --with-gnu-ld --disable-werror --enable-nls --disable-win32-registry --enable-large-address-aware --disable-rpath --disable-symvers --prefix=/mingw64tdm --with-local-prefix=/mingw64tdm --with-pkgversion=tdm64-1 --with-bugurl=https://github.com/jmeubank/tdm-gcc/issues]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 10.3.0 (tdm64-1) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [ C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/cc1.exe -quiet -v -iprefix C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/ -D_REENTRANT C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj -version -o C:\\Users\\johai\\AppData\\Local\\Temp\\ccUUXDTd.s]
+        ignore line: [GNU C17 (tdm64-1) version 10.3.0 (x86_64-w64-mingw32)]
+        ignore line: [	compiled by GNU C version 10.3.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.23-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C17 (tdm64-1) version 10.3.0 (x86_64-w64-mingw32)]
+        ignore line: [	compiled by GNU C version 10.3.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.23-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 68074fcaab9f6b1377b55f7cea05149b]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj C:\\Users\\johai\\AppData\\Local\\Temp\\ccUUXDTd.s]
+        ignore line: [GNU assembler version 2.36.1 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.36.1]
+        ignore line: [COMPILER_PATH=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/]
+        ignore line: [C:/Users/johai/GCC/bin/../libexec/gcc/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../\x0d]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64'\x0d]
+        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\johai\\GCC\\bin\\gcc.exe  -v -Wl -v CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj -o cmTC_577f3.exe -Wl --out-implib libcmTC_577f3.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:\\Users\\johai\\GCC\\bin\\gcc.exe]
+        ignore line: [COLLECT_LTO_WRAPPER=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../../../src/gcc-git-10.3.0/configure --build=x86_64-w64-mingw32 --enable-targets=all --enable-languages=ada,c,c++,fortran,jit,lto,objc,obj-c++ --enable-libgomp --enable-lto --enable-graphite --enable-cxx-flags=-DWINPTHREAD_STATIC --disable-build-with-cxx --disable-build-poststage1-with-cxx --enable-libstdcxx-debug --enable-threads=posix --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --enable-libstdcxx-threads --enable-libstdcxx-time=yes --enable-mingw-wildcard --with-gnu-ld --disable-werror --enable-nls --disable-win32-registry --enable-large-address-aware --disable-rpath --disable-symvers --prefix=/mingw64tdm --with-local-prefix=/mingw64tdm --with-pkgversion=tdm64-1 --with-bugurl=https://github.com/jmeubank/tdm-gcc/issues]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 10.3.0 (tdm64-1) ]
+        ignore line: [COMPILER_PATH=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/]
+        ignore line: [C:/Users/johai/GCC/bin/../libexec/gcc/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_577f3.exe' '-mtune=generic' '-march=x86-64']
+        link line: [ C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/collect2.exe -plugin C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll -plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccD3SdSg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep --exclude-libs=libpthread.a --undefined=__xl_f -Bdynamic -o cmTC_577f3.exe C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0 -LC:/Users/johai/GCC/bin/../lib/gcc -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../.. -v CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_577f3.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o]
+          arg [C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/collect2.exe] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll] ==> ignore
+          arg [-plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccD3SdSg.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+          arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [--exclude-libs=libpthread.a] ==> ignore
+          arg [--undefined=__xl_f] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_577f3.exe] ==> ignore
+          arg [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
+          arg [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o] ==> obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../..] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../..]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_577f3.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o] ==> obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o]
+          arg [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o] ==> obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o]
+        ignore line: [collect2 version 10.3.0]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll -plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccD3SdSg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep --exclude-libs=libpthread.a --undefined=__xl_f -Bdynamic -o cmTC_577f3.exe C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0 -LC:/Users/johai/GCC/bin/../lib/gcc -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../.. -v CMakeFiles/cmTC_577f3.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_577f3.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o\x0d]
+        linker tool for 'C': C:/Users/johai/GCC/x86_64-w64-mingw32/bin/ld.exe
+        remove lib [msvcrt]
+        remove lib [msvcrt]
+        collapse obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/lib/crt2.o]
+        collapse obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o]
+        collapse obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/lib/default-manifest.o]
+        collapse obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc] ==> [C:/Users/johai/GCC/lib/gcc]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib] ==> [C:/Users/johai/GCC/lib]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../..] ==> [C:/Users/johai/GCC/lib]
+        implicit libs: [mingw32;gcc;pthread;gcc;kernel32;moldname;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;mingw32;gcc;pthread;gcc;kernel32;moldname;mingwex;kernel32]
+        implicit objs: [C:/Users/johai/GCC/x86_64-w64-mingw32/lib/crt2.o;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o;C:/Users/johai/GCC/x86_64-w64-mingw32/lib/default-manifest.o;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o]
+        implicit dirs: [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0;C:/Users/johai/GCC/lib/gcc;C:/Users/johai/GCC/x86_64-w64-mingw32/lib;C:/Users/johai/GCC/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Users/johai/GCC/x86_64-w64-mingw32/bin/ld.exe" "-v"
+      GNU ld (GNU Binutils) 2.36.1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-yckveh"
+      binary: "C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-yckveh"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-yckveh'
+        
+        Run Build Command(s): C:/Users/johai/Downloads/ninja-win/ninja.exe -v cmTC_bb178
+        [1/2] C:\\Users\\johai\\GCC\\bin\\c++.exe   -v -o CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"
+        Using built-in specs.
+        COLLECT_GCC=C:\\Users\\johai\\GCC\\bin\\c++.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../../../src/gcc-git-10.3.0/configure --build=x86_64-w64-mingw32 --enable-targets=all --enable-languages=ada,c,c++,fortran,jit,lto,objc,obj-c++ --enable-libgomp --enable-lto --enable-graphite --enable-cxx-flags=-DWINPTHREAD_STATIC --disable-build-with-cxx --disable-build-poststage1-with-cxx --enable-libstdcxx-debug --enable-threads=posix --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --enable-libstdcxx-threads --enable-libstdcxx-time=yes --enable-mingw-wildcard --with-gnu-ld --disable-werror --enable-nls --disable-win32-registry --enable-large-address-aware --disable-rpath --disable-symvers --prefix=/mingw64tdm --with-local-prefix=/mingw64tdm --with-pkgversion=tdm64-1 --with-bugurl=https://github.com/jmeubank/tdm-gcc/issues
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 10.3.0 (tdm64-1) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=generic' '-march=x86-64'
+         C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/cc1plus.exe -quiet -v -iprefix C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/ -D_REENTRANT C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj -version -o C:\\Users\\johai\\AppData\\Local\\Temp\\ccZMZinM.s
+        GNU C++14 (tdm64-1) version 10.3.0 (x86_64-w64-mingw32)
+        	compiled by GNU C version 10.3.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.23-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed"
+        ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include
+        End of search list.
+        GNU C++14 (tdm64-1) version 10.3.0 (x86_64-w64-mingw32)
+        	compiled by GNU C version 10.3.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.23-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 5e49fa89ed7bfe906173ae8e94e08de6
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=generic' '-march=x86-64'
+         C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\johai\\AppData\\Local\\Temp\\ccZMZinM.s
+        GNU assembler version 2.36.1 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.36.1
+        COMPILER_PATH=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/;C:/Users/johai/GCC/bin/../libexec/gcc/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/;C:/Users/johai/GCC/bin/../lib/gcc/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../\x0d
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=generic' '-march=x86-64'\x0d
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\johai\\GCC\\bin\\c++.exe  -v -Wl,-v CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_bb178.exe -Wl,--out-implib,libcmTC_bb178.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        Using built-in specs.
+        COLLECT_GCC=C:\\Users\\johai\\GCC\\bin\\c++.exe
+        COLLECT_LTO_WRAPPER=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../../../src/gcc-git-10.3.0/configure --build=x86_64-w64-mingw32 --enable-targets=all --enable-languages=ada,c,c++,fortran,jit,lto,objc,obj-c++ --enable-libgomp --enable-lto --enable-graphite --enable-cxx-flags=-DWINPTHREAD_STATIC --disable-build-with-cxx --disable-build-poststage1-with-cxx --enable-libstdcxx-debug --enable-threads=posix --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --enable-libstdcxx-threads --enable-libstdcxx-time=yes --enable-mingw-wildcard --with-gnu-ld --disable-werror --enable-nls --disable-win32-registry --enable-large-address-aware --disable-rpath --disable-symvers --prefix=/mingw64tdm --with-local-prefix=/mingw64tdm --with-pkgversion=tdm64-1 --with-bugurl=https://github.com/jmeubank/tdm-gcc/issues
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 10.3.0 (tdm64-1) 
+        COMPILER_PATH=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/;C:/Users/johai/GCC/bin/../libexec/gcc/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/;C:/Users/johai/GCC/bin/../lib/gcc/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_bb178.exe' '-mtune=generic' '-march=x86-64'
+         C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/collect2.exe -plugin C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll -plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccfVykX1.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep --exclude-libs=libpthread.a --undefined=__xl_f -Bdynamic -o cmTC_bb178.exe C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0 -LC:/Users/johai/GCC/bin/../lib/gcc -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../.. -v CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_bb178.dll.a --major-image-version 0 --minor-image-version 0 -Bstatic -lstdc++ -Bdynamic -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o
+        collect2 version 10.3.0
+        C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll -plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccfVykX1.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep --exclude-libs=libpthread.a --undefined=__xl_f -Bdynamic -o cmTC_bb178.exe C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0 -LC:/Users/johai/GCC/bin/../lib/gcc -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../.. -v CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_bb178.dll.a --major-image-version 0 --minor-image-version 0 -Bstatic -lstdc++ -Bdynamic -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o\x0d
+        GNU ld (GNU Binutils) 2.36.1\x0d
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_bb178.exe' '-mtune=generic' '-march=x86-64'\x0d
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed]
+          add: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include]
+        end of search list found
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include] ==> [C:/Users/johai/GCC/include]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed]
+        collapse include dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/include]
+        implicit include dirs: [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include;C:/Users/johai/GCC/include;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed;C:/Users/johai/GCC/x86_64-w64-mingw32/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: 'C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/CMakeScratch/TryCompile-yckveh']
+        ignore line: []
+        ignore line: [Run Build Command(s): C:/Users/johai/Downloads/ninja-win/ninja.exe -v cmTC_bb178]
+        ignore line: [[1/2] C:\\Users\\johai\\GCC\\bin\\c++.exe   -v -o CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:\\Users\\johai\\GCC\\bin\\c++.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../../../src/gcc-git-10.3.0/configure --build=x86_64-w64-mingw32 --enable-targets=all --enable-languages=ada,c,c++,fortran,jit,lto,objc,obj-c++ --enable-libgomp --enable-lto --enable-graphite --enable-cxx-flags=-DWINPTHREAD_STATIC --disable-build-with-cxx --disable-build-poststage1-with-cxx --enable-libstdcxx-debug --enable-threads=posix --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --enable-libstdcxx-threads --enable-libstdcxx-time=yes --enable-mingw-wildcard --with-gnu-ld --disable-werror --enable-nls --disable-win32-registry --enable-large-address-aware --disable-rpath --disable-symvers --prefix=/mingw64tdm --with-local-prefix=/mingw64tdm --with-pkgversion=tdm64-1 --with-bugurl=https://github.com/jmeubank/tdm-gcc/issues]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 10.3.0 (tdm64-1) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [ C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/cc1plus.exe -quiet -v -iprefix C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/ -D_REENTRANT C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj -version -o C:\\Users\\johai\\AppData\\Local\\Temp\\ccZMZinM.s]
+        ignore line: [GNU C++14 (tdm64-1) version 10.3.0 (x86_64-w64-mingw32)]
+        ignore line: [	compiled by GNU C version 10.3.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.23-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed"]
+        ignore line: [ignoring duplicate directory "C:/Users/johai/GCC/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../include]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/include-fixed]
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++14 (tdm64-1) version 10.3.0 (x86_64-w64-mingw32)]
+        ignore line: [	compiled by GNU C version 10.3.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.23-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 5e49fa89ed7bfe906173ae8e94e08de6]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [ C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\johai\\AppData\\Local\\Temp\\ccZMZinM.s]
+        ignore line: [GNU assembler version 2.36.1 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.36.1]
+        ignore line: [COMPILER_PATH=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/]
+        ignore line: [C:/Users/johai/GCC/bin/../libexec/gcc/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../\x0d]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mtune=generic' '-march=x86-64'\x0d]
+        ignore line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && C:\\Users\\johai\\GCC\\bin\\c++.exe  -v -Wl -v CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_bb178.exe -Wl --out-implib libcmTC_bb178.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:\\Users\\johai\\GCC\\bin\\c++.exe]
+        ignore line: [COLLECT_LTO_WRAPPER=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../../../src/gcc-git-10.3.0/configure --build=x86_64-w64-mingw32 --enable-targets=all --enable-languages=ada,c,c++,fortran,jit,lto,objc,obj-c++ --enable-libgomp --enable-lto --enable-graphite --enable-cxx-flags=-DWINPTHREAD_STATIC --disable-build-with-cxx --disable-build-poststage1-with-cxx --enable-libstdcxx-debug --enable-threads=posix --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --enable-libstdcxx-threads --enable-libstdcxx-time=yes --enable-mingw-wildcard --with-gnu-ld --disable-werror --enable-nls --disable-win32-registry --enable-large-address-aware --disable-rpath --disable-symvers --prefix=/mingw64tdm --with-local-prefix=/mingw64tdm --with-pkgversion=tdm64-1 --with-bugurl=https://github.com/jmeubank/tdm-gcc/issues]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 10.3.0 (tdm64-1) ]
+        ignore line: [COMPILER_PATH=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/]
+        ignore line: [C:/Users/johai/GCC/bin/../libexec/gcc/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_bb178.exe' '-mtune=generic' '-march=x86-64']
+        link line: [ C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/collect2.exe -plugin C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll -plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccfVykX1.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep --exclude-libs=libpthread.a --undefined=__xl_f -Bdynamic -o cmTC_bb178.exe C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0 -LC:/Users/johai/GCC/bin/../lib/gcc -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../.. -v CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_bb178.dll.a --major-image-version 0 --minor-image-version 0 -Bstatic -lstdc++ -Bdynamic -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o]
+          arg [C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/collect2.exe] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll] ==> ignore
+          arg [-plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccfVykX1.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+          arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [--exclude-libs=libpthread.a] ==> ignore
+          arg [--undefined=__xl_f] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_bb178.exe] ==> ignore
+          arg [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
+          arg [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o] ==> obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib]
+          arg [-LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../..] ==> dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../..]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_bb178.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-Bstatic] ==> search static
+          arg [-lstdc++] ==> lib [SEARCH_STATIC:stdc++]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o] ==> obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o]
+          arg [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o] ==> obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o]
+        ignore line: [collect2 version 10.3.0]
+        ignore line: [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/liblto_plugin-0.dll -plugin-opt=C:/Users/johai/GCC/bin/../libexec/gcc/x86_64-w64-mingw32/10.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\johai\\AppData\\Local\\Temp\\ccfVykX1.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep --exclude-libs=libpthread.a --undefined=__xl_f -Bdynamic -o cmTC_bb178.exe C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0 -LC:/Users/johai/GCC/bin/../lib/gcc -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../.. -v CMakeFiles/cmTC_bb178.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_bb178.dll.a --major-image-version 0 --minor-image-version 0 -Bstatic -lstdc++ -Bdynamic -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lpthread -lgcc -lkernel32 -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o\x0d]
+        linker tool for 'CXX': C:/Users/johai/GCC/x86_64-w64-mingw32/bin/ld.exe
+        search lib [SEARCH_STATIC:stdc++] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/libstdc++.a]
+        remove lib [msvcrt]
+        remove lib [msvcrt]
+        collapse obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/lib/crt2.o]
+        collapse obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o]
+        collapse obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/lib/default-manifest.o]
+        collapse obj [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0] ==> [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc] ==> [C:/Users/johai/GCC/lib/gcc]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../lib] ==> [C:/Users/johai/GCC/lib]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/lib] ==> [C:/Users/johai/GCC/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/Users/johai/GCC/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../..] ==> [C:/Users/johai/GCC/lib]
+        implicit libs: [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/libstdc++.a;mingw32;gcc;pthread;gcc;kernel32;moldname;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;mingw32;gcc;pthread;gcc;kernel32;moldname;mingwex;kernel32]
+        implicit objs: [C:/Users/johai/GCC/x86_64-w64-mingw32/lib/crt2.o;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/crtbegin.o;C:/Users/johai/GCC/x86_64-w64-mingw32/lib/default-manifest.o;C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0/crtend.o]
+        implicit dirs: [C:/Users/johai/GCC/lib/gcc/x86_64-w64-mingw32/10.3.0;C:/Users/johai/GCC/lib/gcc;C:/Users/johai/GCC/x86_64-w64-mingw32/lib;C:/Users/johai/GCC/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Users/johai/GCC/x86_64-w64-mingw32/bin/ld.exe" "-v"
+      GNU ld (GNU Binutils) 2.36.1
+...

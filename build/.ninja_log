@@ -1,0 +1,17 @@
+# ninja log v6
+83	205	7409181783830192	CMakeFiles/chessBoardWrap.dir/Engine/Src/attackTables.cpp.obj	9fe23630aa443632
+32	2020	7411926687976918	CMakeFiles/chessBoardWrap.dir/Engine/Src/chessboard.cpp.obj	9c74deffefc312c9
+91	6055	7411756116991972	CMakeFiles/chessBoardWrap.dir/Engine/Src/wrapper.cpp.obj	cabd0222f134d610
+63	664	7411756116718568	CMakeFiles/chessBoardWrap.dir/Engine/Src/bitboards.cpp.obj	83d13065a90a51c5
+17	487	7411756280490568	CMakeFiles/chessBoardWrap.dir/Engine/Src/main.cpp.obj	7c5bddbb4bd40dab
+2020	13528	7411926707866007	chessBoardWrap.pyd	536fa8f67e45860d
+5	435	7407417329072488	CMakeFiles/chessBoardWrap.dir/main.cpp.obj	af1364f002a17485
+51	131	7407419362975439	CMakeFiles/chess_engine.dir/Engine/Src/attackTables.cpp.obj	ed385bcf59e3c3b6
+21	592	7420390834748979	CMakeFiles/chess_engine.dir/Engine/Src/bitboards.cpp.obj	c59b0dd7e67728a4
+4	466	7420394344081852	CMakeFiles/chess_engine.dir/Engine/Src/main.cpp.obj	e35342e55fefb5d8
+35	970	7420390834891859	CMakeFiles/chess_engine.dir/Engine/Src/chessboard.cpp.obj	6a29b061cda3ac66
+48	5503	7420390835016127	CMakeFiles/chess_engine.dir/Engine/Src/wrapper.cpp.obj	d668c5744a3ccaac
+466	5822	7420394348699132	chess_engine.exe	fbb09cc5b75d662c
+5	426	7420392433838582	CMakeFiles/chess_engine.dir/Engine/Src/eval.cpp.obj	5ed6f621a797307
+5	437	7420395723348206	CMakeFiles/chess_engine.dir/Engine/Src/eval.cpp.obj	5ed6f621a797307
+437	6056	7420395727676268	chess_engine.exe	fbb09cc5b75d662c
