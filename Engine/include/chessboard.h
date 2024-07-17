@@ -97,6 +97,7 @@ struct Move {
                this->enpassant == other.enpassant &&
                this->castling == other.castling;
     }
+
 };
 
 struct BoardState {
@@ -114,6 +115,7 @@ struct BoardState {
     unsigned long long allSquaresAttackedByWhite;
     unsigned long long allSquaresAttackedByBlack;
     Move lastMove;
+    unsigned long long key;
 };
 
 
@@ -156,88 +158,30 @@ public:
     inline unsigned long long getFriendlyBoard(Color col) {
         return (col == WHITE ? getWhitePieces() : getBlackPieces());
     }
-    unsigned long long pawnAttacks(int square, Color color);
-
-    void populatePawnCaptures(Color color, Move lastMove, vector<Move>&);
-    void populateQuietPawnMoves(Color color, vector<Move>&);
-
-    unsigned long long generateKnightAttacks(int square);
-    void populateKnightMoves(Color color, vector<Move>&);
-
-    unsigned long long generateKingAttacks(int square);
-    void populateKingMoves(Color color, vector<Move>&);
-
-    unsigned long long bishopAttackMasks(int square);
-    unsigned long long bishopRestrictedAttackMasks(int square, unsigned long long restOfBoard);
-    void populateBishopMoves(Color color, vector<Move>&);
-
-    unsigned long long rookAttackMasks(int square);
-    unsigned long long rookRestrictedAttacksMasks(int square, unsigned long long restOfBoard);
-    void populateRookMoves(Color color, vector<Move>&);
-
-    unsigned long long queenAttackMasks(int square);
-    unsigned long long queenRestrictedAttackMasks(int square, unsigned long long restOfBoard);
-    void populateQueenMoves(Color color, vector<Move>&);
-
-    unsigned long long findMagicNumber(int square, int m, bool bishop);
-
-    void initializeAllSlidingMasks();
-    void initializeAttackTables(int bishop);
-
-    unsigned long long getAllSquaresAttackedByWhite();
-    unsigned long long getAllSquaresAttackedByBlack();
-
-    unsigned long long instantBishopAttacks(unsigned long long occupancy, int square);
-    unsigned long long instantRookAttacks(unsigned long long occupancy, int square);
-    unsigned long long instantQueenAttacks(unsigned long long occupancy, int square);
-
-    void intializeAllSquaresAttackedByWhite();
-    void intializeAllSquaresAttackedByBlack();
-
-    void updateAllSquaresAttackedByWhite(Move move);
-    void updateAllSquaresAttackedByBlack(Move move);
 
     bool isSquareAttacked(int square, Color color);
 
-    void isThereACheck(Color color);
-
     void generateMoves(Color color, vector<Move>&); 
-    void filterIllegalMoves(Color, vector<Move>&);  
+    void generateCaptureMoves(Color color, vector<Move>& captureList);
     bool makeAMove(Move &move);
-    void updateBoards();
-    void guiMove(Piece, int, int);
-    void removePiece(int square);
-    void placePiece(int square, Piece color);
-    void handleEnpassant(int square, Color color);
-    void handleCastling(int square, int esquare, Color color);
-    void handlePromotion(int endSquare, Color color);
 
-    bool moveLeavesKingInCheck(Move& move);
-
-    void updateCheckStatus(Color);
-    
     void saveBoardState();
     void restoreBoardState();
-    void undoMove();
 
     void perft(int depth);
     void perftTest(int depth, int intialDepth);
+
+    void undoMove();
 
     void setBoardFromFEN(const std::string& fen);
 
     void clearBitForAllPieces(int square, Color color);
 
     void printChessBoard();
-    std::string indexToNotation(int index);
     void printMove(int startSquare, int endSquare);
-    char pieceToChar(Piece);
-
-    void exploreA2A4Branch(int depth);
-    void exploreC2C4Branch(int depth);
-
+    unsigned long long generateHashForPosition();
+    unsigned long long hashKey;
     unsigned long long nodes = 0;
-    int captures = 0;
-    int checks;
 
 private:
 
@@ -278,7 +222,79 @@ private:
 
     Move lastMove = Move();
 
+    
+    unsigned long long pieceKeys[2][6][64];
+    unsigned long long castlingKeys[16];
+    unsigned long long sideKey;
+
     std::stack<BoardState> boardStateStack;
+
+    std::string indexToNotation(int index);
+    char pieceToChar(Piece);
+
+    void exploreA2A4Branch(int depth);
+    void exploreC2C4Branch(int depth);
+
+    int captures = 0;
+    int checks;
+
+    void updateBoards();
+    void guiMove(Piece, int, int);
+    void removePiece(int square);
+    void placePiece(int square, Piece color);
+    void handleEnpassant(int square, Color color);
+    void handleCastling(int square, int esquare, Color color);
+    void handlePromotion(int endSquare, Color color);
+
+    bool moveLeavesKingInCheck(Move& move);
+
+    void updateCheckStatus(Color);
+    
+        unsigned long long pawnAttacks(int square, Color color);
+
+    void populatePawnCaptures(Color color, Move lastMove, vector<Move>&);
+    void populateQuietPawnMoves(Color color, vector<Move>&);
+
+    unsigned long long generateKnightAttacks(int square);
+    void populateKnightMoves(Color color, vector<Move>&, bool captureOnly);
+
+    unsigned long long generateKingAttacks(int square);
+    void populateKingMoves(Color color, vector<Move>&, bool captureOnly);
+
+    unsigned long long bishopAttackMasks(int square);
+    unsigned long long bishopRestrictedAttackMasks(int square, unsigned long long restOfBoard);
+    void populateBishopMoves(Color color, vector<Move>&, bool captureOnly);
+
+    unsigned long long rookAttackMasks(int square);
+    unsigned long long rookRestrictedAttacksMasks(int square, unsigned long long restOfBoard);
+    void populateRookMoves(Color color, vector<Move>&, bool captureOnly);
+
+    unsigned long long queenAttackMasks(int square);
+    unsigned long long queenRestrictedAttackMasks(int square, unsigned long long restOfBoard);
+    void populateQueenMoves(Color color, vector<Move>&, bool captureOnly);
+
+    unsigned long long findMagicNumber(int square, int m, bool bishop);
+
+    void initializeAllSlidingMasks();
+    void initializeAttackTables(int bishop);
+
+    unsigned long long getAllSquaresAttackedByWhite();
+    unsigned long long getAllSquaresAttackedByBlack();
+
+    unsigned long long instantBishopAttacks(unsigned long long occupancy, int square);
+    unsigned long long instantRookAttacks(unsigned long long occupancy, int square);
+    unsigned long long instantQueenAttacks(unsigned long long occupancy, int square);
+
+    void intializeAllSquaresAttackedByWhite();
+    void intializeAllSquaresAttackedByBlack();
+
+    void updateAllSquaresAttackedByWhite(Move move);
+    void updateAllSquaresAttackedByBlack(Move move);
+
+    void initializeHashKeys();
+
+    int enPassantSquare;
+
 
 };
 

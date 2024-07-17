@@ -271,7 +271,7 @@ unsigned long long ChessBoard::generateKnightAttacks(int square){
     return attackBoard;
 }
 
-void ChessBoard::populateKnightMoves(Color color, vector<Move>& moveList)
+void ChessBoard::populateKnightMoves(Color color, vector<Move>& moveList, bool captureOnly)
 {
     unsigned long long friendlyBoard = getFriendlyBoard(color);
     unsigned long long opposingBoard = getOpposingBoard(color);
@@ -289,6 +289,10 @@ void ChessBoard::populateKnightMoves(Color color, vector<Move>& moveList)
             int endSquare = captureBoard.LS1B();
             captureBoard.flipBit(endSquare);
             moveList.emplace_back(Move(currentSquare, endSquare, KNIGHT, color, getPiece(endSquare), EMPTY, 0, 0, 0, 0));
+        }
+
+        if(captureOnly){
+            continue;
         }
 
         auto quietBoard = BitBoard((attackBoard & ~friendlyBoard) & ~opposingBoard);
@@ -320,7 +324,7 @@ unsigned long long ChessBoard::generateKingAttacks(int square){
     return attackBoard;
 }
 
-void ChessBoard::populateKingMoves(Color color, vector<Move>& moveList) {
+void ChessBoard::populateKingMoves(Color color, vector<Move>& moveList, bool captureOnly) {
     unsigned long long friendlyBoard = getFriendlyBoard(color);
     unsigned long long opposingBoard = getOpposingBoard(color);
     BitBoard kingBoard = BitBoard((color == WHITE) ? whiteBoards[5] : blackBoards[5]);
@@ -328,6 +332,17 @@ void ChessBoard::populateKingMoves(Color color, vector<Move>& moveList) {
     unsigned long long attackBoard = generateKingAttacks(kingSquare);
     BitBoard captureBoard;
 
+    captureBoard = BitBoard(attackBoard & opposingBoard);
+    while (captureBoard.getBoard()) {
+        int endSquare = captureBoard.LS1B();
+        captureBoard.flipBit(endSquare);
+        if (isSquareAttacked(endSquare, (color == WHITE) ? WHITE : BLACK)) continue;
+            moveList.emplace_back(Move(kingSquare, endSquare, KING, color, getPiece(endSquare), EMPTY, 0, 0, 0, 0));
+    }
+
+    if(captureOnly){
+        return;
+    }
     // Check for castling
     if (color == WHITE) {
         if (canWhiteCastleQueenSide && !(allPieces & ((1ULL << (kingSquare + 1)) | (1ULL << (kingSquare + 2)))) &&
@@ -348,14 +363,6 @@ void ChessBoard::populateKingMoves(Color color, vector<Move>& moveList) {
             !isSquareAttacked(kingSquare, BLACK) && !isSquareAttacked(kingSquare + 1, BLACK) && !isSquareAttacked(kingSquare + 2, BLACK)) {
             moveList.emplace_back(Move(kingSquare, kingSquare + 2, KING, BLACK, Piece(), EMPTY, 0, 0, 0, 1));
         }
-    }
-
-    captureBoard = BitBoard(attackBoard & opposingBoard);
-    while (captureBoard.getBoard()) {
-        int endSquare = captureBoard.LS1B();
-        captureBoard.flipBit(endSquare);
-        if (isSquareAttacked(endSquare, (color == WHITE) ? WHITE : BLACK)) continue;
-            moveList.emplace_back(Move(kingSquare, endSquare, KING, color, getPiece(endSquare), EMPTY, 0, 0, 0, 0));
     }
 
     auto quietBoard = BitBoard((attackBoard & ~friendlyBoard) & ~opposingBoard);
@@ -419,7 +426,7 @@ unsigned long long ChessBoard::bishopRestrictedAttackMasks(int square, unsigned 
     return attackBoard;
 }
 
-void ChessBoard::populateBishopMoves(Color color, vector<Move>& moveList)
+void ChessBoard::populateBishopMoves(Color color, vector<Move>& moveList, bool captureOnly)
 {
     unsigned long long friendlyBoard = getFriendlyBoard(color);
     unsigned long long opposingBoard = getOpposingBoard(color);
@@ -436,6 +443,10 @@ void ChessBoard::populateBishopMoves(Color color, vector<Move>& moveList)
             int endSquare = captureBoard.LS1B();
             captureBoard.flipBit(endSquare);
             moveList.emplace_back(Move(currentSquare, endSquare, BISHOP, color, getPiece(endSquare), EMPTY, 0, 0, 0, 0));
+        }
+        
+        if(captureOnly){
+            continue;
         }
 
         auto quietBoard = BitBoard((attackBoard & ~friendlyBoard) & ~opposingBoard);
@@ -499,7 +510,7 @@ unsigned long long ChessBoard::rookRestrictedAttacksMasks(int square, unsigned l
     return attackBoard;
 }
 
-void ChessBoard::populateRookMoves(Color color, vector<Move>& moveList)
+void ChessBoard::populateRookMoves(Color color, vector<Move>& moveList, bool captureOnly)
 {
     unsigned long long friendlyBoard = getFriendlyBoard(color);
     unsigned long long opposingBoard = getOpposingBoard(color);
@@ -516,6 +527,10 @@ void ChessBoard::populateRookMoves(Color color, vector<Move>& moveList)
             int endSquare = captureBoard.LS1B();
             captureBoard.flipBit(endSquare);
             moveList.emplace_back(Move(currentSquare, endSquare, ROOK, color, getPiece(endSquare), EMPTY, 0, 0, 0, 0));
+        }
+
+        if(captureOnly){
+            continue;
         }
 
         auto quietBoard = BitBoard((attackBoard & ~friendlyBoard) & ~opposingBoard);
@@ -540,7 +555,7 @@ unsigned long long ChessBoard::queenRestrictedAttackMasks(int square, unsigned l
     return rookMask | bishopMask;
 }
 
-void ChessBoard::populateQueenMoves(Color color, vector<Move>& moveList)
+void ChessBoard::populateQueenMoves(Color color, vector<Move>& moveList, bool captureOnly)
 {
     unsigned long long friendlyBoard = getFriendlyBoard(color);
     unsigned long long opposingBoard = getOpposingBoard(color);
@@ -557,6 +572,10 @@ void ChessBoard::populateQueenMoves(Color color, vector<Move>& moveList)
             int endSquare = captureBoard.LS1B();
             captureBoard.flipBit(endSquare);
             moveList.emplace_back(Move(currentSquare, endSquare, QUEEN, color, getPiece(endSquare), EMPTY, 0, 0, 0, 0));
+        }
+
+        if(captureOnly){
+            return;
         }
 
         auto quietBoard = BitBoard((attackBoard & ~friendlyBoard) & ~opposingBoard);
@@ -810,12 +829,24 @@ void ChessBoard::generateMoves(Color color, vector<Move>& moveList) {
     moveList.clear();
     populatePawnCaptures(color, lastMove, moveList);
     populateQuietPawnMoves(color, moveList);
-    populateKnightMoves(color, moveList);
-    populateBishopMoves(color, moveList);
-    populateQueenMoves(color, moveList);
-    populateRookMoves(color, moveList);
-    populateKingMoves(color, moveList);
+    populateKnightMoves(color, moveList,0);
+    populateBishopMoves(color, moveList,0);
+    populateQueenMoves(color, moveList,0);
+    populateRookMoves(color, moveList,0);
+    populateKingMoves(color, moveList,0);
 }
+
+void ChessBoard::generateCaptureMoves(Color color, vector<Move>& moveList){
+    moveList.clear();
+    populatePawnCaptures(color, lastMove, moveList);
+    populateKnightMoves(color, moveList, 1);
+    populateBishopMoves(color, moveList, 1);
+    populateQueenMoves(color, moveList, 1);
+    populateRookMoves(color, moveList, 1);
+    populateKingMoves(color, moveList, 1);
+
+}
+
 bool ChessBoard::makeAMove(Move &move) {
 
     removePiece(move.endSquare);
@@ -1008,11 +1039,7 @@ void ChessBoard::perft(int depth) {
     for (auto& move : moveList) {
         saveBoardState();
         if (makeAMove(move)) {
-            if (depth == 4 && move.startingSquare == 10 && move.endSquare == 26) {
-                exploreA2A4Branch(depth - 1);
-            } else {
-                perft(depth - 1);
-            }
+            perft(depth - 1);
             undoMove();
         }
         restoreBoardState();
@@ -1032,33 +1059,11 @@ void ChessBoard::perftTest(int depth, int intialDepth)
 
     for (auto& move : moveList) {
         saveBoardState();
-
         if (!makeAMove(move)) {
             continue;
         }
-
-        // if ((depth == 4 && move.startingSquare == 13 && move.endSquare == 29) || printSubMoves) {
-        //     while (true) {
-        //         if (_kbhit()) { 
-        //             char ch = _getch();  
-        //             if (ch == ' ') { 
-        //                 printChessBoard();
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     printSubMoves = true;
-        // }
-
-        long cumulativeNodes = nodes;
         perftTest(depth - 1, intialDepth);
-        long oldNodes = nodes - cumulativeNodes;
         undoMove();
-
-        if (depth == intialDepth) { 
-            printMove(move.startingSquare, move.endSquare);
-            cout << " " << oldNodes << endl;
-        }
     }
 }
 
