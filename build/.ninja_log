@@ -7,9 +7,11 @@
 2020	13528	7411926707866007	chessBoardWrap.pyd	536fa8f67e45860d
 5	435	7407417329072488	CMakeFiles/chessBoardWrap.dir/main.cpp.obj	af1364f002a17485
 51	131	7407419362975439	CMakeFiles/chess_engine.dir/Engine/Src/attackTables.cpp.obj	ed385bcf59e3c3b6
-27	1104	7428530413107813	CMakeFiles/chess_engine.dir/Engine/Src/bitboards.cpp.obj	c59b0dd7e67728a4
-7	777	7429024120285611	CMakeFiles/chess_engine.dir/Engine/Src/main.cpp.obj	e35342e55fefb5d8
-29	2032	7428539606599242	CMakeFiles/chess_engine.dir/Engine/Src/chessboard.cpp.obj	6a29b061cda3ac66
+21	810	7431735705630160	CMakeFiles/chess_engine.dir/Engine/Src/bitboards.cpp.obj	c59b0dd7e67728a4
+5	711	7431738895877882	CMakeFiles/chess_engine.dir/Engine/Src/main.cpp.obj	e35342e55fefb5d8
+42	1540	7431735705849916	CMakeFiles/chess_engine.dir/Engine/Src/chessboard.cpp.obj	6a29b061cda3ac66
 8	93	7428183829312021	CMakeFiles/chess_engine.dir/Engine/Src/wrapper.cpp.obj	d668c5744a3ccaac
-778	1587	7429024127987642	chess_engine.exe	fbb09cc5b75d662c
-5	1499	7429023955363788	CMakeFiles/chess_engine.dir/Engine/Src/eval.cpp.obj	5ed6f621a797307
+712	1563	7431738902951673	chess_engine.exe	fbb09cc5b75d662c
+58	1899	7431735706009800	CMakeFiles/chess_engine.dir/Engine/Src/eval.cpp.obj	5ed6f621a797307
+7	1536	7431742870711371	CMakeFiles/chess_engine.dir/Engine/Src/chessboard.cpp.obj	6a29b061cda3ac66
+1536	2200	7431742886002153	chess_engine.exe	fbb09cc5b75d662c

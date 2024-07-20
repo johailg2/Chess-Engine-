@@ -178,10 +178,20 @@ public:
     void clearBitForAllPieces(int square, Color color);
 
     void printChessBoard();
+    void removePiece(int square);
+    void placePiece(int square, Piece color);
     void printMove(int startSquare, int endSquare);
-    unsigned long long generateHashForPosition();
-    unsigned long long hashKey;
+    void initializeHashKeys();
+    unsigned long long generateInitialHash() const;
+    unsigned long long updateHash(unsigned long long hash, const Move& move) const;
     unsigned long long nodes = 0;
+    unsigned long long currentHash;
+    unsigned long long zorbristTable[2][6][64];
+    unsigned long long castlingKeys[4];
+    unsigned long long enPassantKeys[8];
+    unsigned long long turnKey;
+    int enPassantFile;
+    Move lastMove ;
 
 private:
 
@@ -220,38 +230,21 @@ private:
 
     Move lastMoveBackup;
 
-    Move lastMove = Move();
-
-    
-    unsigned long long pieceKeys[2][6][64];
-    unsigned long long castlingKeys[16];
-    unsigned long long sideKey;
-
     std::stack<BoardState> boardStateStack;
 
     std::string indexToNotation(int index);
     char pieceToChar(Piece);
 
-    void exploreA2A4Branch(int depth);
-    void exploreC2C4Branch(int depth);
-
     int captures = 0;
     int checks;
 
     void updateBoards();
-    void guiMove(Piece, int, int);
-    void removePiece(int square);
-    void placePiece(int square, Piece color);
+
     void handleEnpassant(int square, Color color);
     void handleCastling(int square, int esquare, Color color);
-    void handlePromotion(int endSquare, Color color);
-
-    bool moveLeavesKingInCheck(Move& move);
-
-    void updateCheckStatus(Color);
+    void handlePromotion(int endSquare, Color color, PieceType);
     
-        unsigned long long pawnAttacks(int square, Color color);
-
+    unsigned long long pawnAttacks(int square, Color color);
     void populatePawnCaptures(Color color, Move lastMove, vector<Move>&);
     void populateQuietPawnMoves(Color color, vector<Move>&);
 
@@ -288,12 +281,7 @@ private:
     void intializeAllSquaresAttackedByWhite();
     void intializeAllSquaresAttackedByBlack();
 
-    void updateAllSquaresAttackedByWhite(Move move);
-    void updateAllSquaresAttackedByBlack(Move move);
-
-    void initializeHashKeys();
-
-    int enPassantSquare;
+    vector<Move> enPassantEnable;
 
 
 };

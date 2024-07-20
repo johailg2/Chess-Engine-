@@ -467,6 +467,7 @@ SearchResult Evaluation::iterativeDeepeningSearch(ChessBoard &board, int depth, 
     auto start = high_resolution_clock::now();
 
     for (int currentDepth = 1; currentDepth <= depth; ++currentDepth) {
+        cout << "Starting search at depth: " << currentDepth << endl;
         finalResult = minMax(board, currentDepth, INT_MIN, INT_MAX, player, pv);
         cout << "Depth: " << currentDepth << " Best Move: ";
         board.printMove(finalResult.bestMove.startingSquare, finalResult.bestMove.endSquare);
@@ -486,6 +487,7 @@ SearchResult Evaluation::iterativeDeepeningSearch(ChessBoard &board, int depth, 
 
     return finalResult;
 }
+
 
 int Evaluation::scoreMove(Move& move, int depth, const vector<Move>& pv) {
 

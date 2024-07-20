@@ -52,6 +52,9 @@ void ChessBoard::initialize(){
     initializeAllSlidingMasks();
     initializeAttackTables(1);
     initializeAttackTables(0);
+    initializeHashKeys();
+    currentHash = generateInitialHash();
+
 }
 
 unsigned long long ChessBoard::getPieceBoard(Piece piece) const
@@ -244,6 +247,12 @@ void ChessBoard::populateQuietPawnMoves(Color color, vector<Move>& moveList) {
                     if (doublePushSquare >= 0 && doublePushSquare < 64) {
                         if (!(allPieces & (1ULL << doublePushSquare) || (allPieces & (1ULL << singlePushSquare)))) {  // Check if both squares ahead are clear
                             moveList.emplace_back(Move(currentSquare, doublePushSquare, PAWN, color, Piece(), EMPTY, 0, 1, 0, 0));
+                            int leftSquare = doublePushSquare - 1;
+                            int rightSquare = doublePushSquare + 1;
+                            auto enemyPawnBoard = (color != WHITE) ? BitBoard(whiteBoards[0]) : BitBoard(blackBoards[0]);
+                            if(enemyPawnBoard.getBit(leftSquare) || enemyPawnBoard.getBit(rightSquare)){
+                                enPassantEnable.emplace_back(Move(currentSquare, doublePushSquare, PAWN, color, Piece(), EMPTY, 0, 1, 0, 0));
+                            }
                         }
                     }
                 }
@@ -849,9 +858,66 @@ void ChessBoard::generateCaptureMoves(Color color, vector<Move>& moveList){
 
 bool ChessBoard::makeAMove(Move &move) {
 
+    currentHash = updateHash(currentHash, move);
     removePiece(move.endSquare);
     removePiece(move.startingSquare);
-    placePiece(move.endSquare, Piece(move.movingPieceColor, move.movingPieceType));
+    if(move.isPromotion){
+        placePiece(move.endSquare, Piece(move.movingPieceColor, move.promotedPieceType));
+    }
+    else{
+        placePiece(move.endSquare, Piece(move.movingPieceColor, move.movingPieceType));
+    }
+    
+    if(move.movingPieceType == KING){
+        if(move.movingPieceColor == WHITE){
+            canWhiteCastleKingSide = 0;
+            canWhiteCastleQueenSide = 0;
+        }
+        else{
+            canBlackCastleKingSide = 0;
+            canBlackCastleQueenSide = 0;
+        }
+    }  
+
+    enPassantFile = -1;
+
+    if(enPassantEnable.size()){
+        for(auto m : enPassantEnable){
+            if(m == move){
+                enPassantFile = move.endSquare % 8;
+            }
+        }
+    }
+
+    if(move.movingPieceType == ROOK){
+        if(move.startingSquare == 56){
+            canBlackCastleKingSide = 0;
+        }
+        else if(move.startingSquare == 63){
+            canBlackCastleQueenSide = 0;
+        }
+        else if(move.startingSquare == 0){
+            canWhiteCastleKingSide = 0;
+        }
+        else if(move.startingSquare == 7){
+            canWhiteCastleQueenSide = 0;
+        }
+    }
+
+    if (move.capturedPiece.type == ROOK) {
+        if (move.endSquare == 56) {
+            canBlackCastleKingSide = 0;
+        } 
+        else if (move.endSquare == 63) {
+            canBlackCastleQueenSide = 0;
+        } 
+        else if (move.endSquare == 0) {
+            canWhiteCastleKingSide = 0;
+        } 
+        else if (move.endSquare == 7) {
+            canWhiteCastleQueenSide = 0;
+        }
+    }
 
     if (move.enpassant) {
         handleEnpassant(move.endSquare, move.movingPieceColor);
@@ -859,9 +925,7 @@ bool ChessBoard::makeAMove(Move &move) {
     if (move.castling) {
         handleCastling(move.startingSquare, move.endSquare, move.movingPieceColor);
     }
-    if (move.isPromotion) {
-        handlePromotion(move.endSquare, move.movingPieceColor);
-    }
+
 
     updateBoards();
 
@@ -876,6 +940,7 @@ bool ChessBoard::makeAMove(Move &move) {
 
     colorToMove = (move.movingPieceColor == WHITE ? BLACK : WHITE);
     lastMove = move;
+    enPassantEnable.clear();
     return true;
 }
 
@@ -899,6 +964,7 @@ void ChessBoard::saveBoardState() {
     state.allSquaresAttackedByWhite = allSquaresAttackedByWhite;
     state.allSquaresAttackedByBlack = allSquaresAttackedByBlack;
     state.lastMove = lastMove;
+    state.key = currentHash;
     boardStateStack.push(state);
 }
 
@@ -920,6 +986,7 @@ void ChessBoard::restoreBoardState() {
         allSquaresAttackedByWhite = state.allSquaresAttackedByWhite;
         allSquaresAttackedByBlack = state.allSquaresAttackedByBlack;
         lastMove = state.lastMove;
+        currentHash = state.key;
     }
 }
 
@@ -1009,23 +1076,26 @@ void ChessBoard::handleCastling(int startSquare, int endSquare, Color color) {
     if (startSquare == E1 && endSquare == G1) { // White kingside castling
         removePiece(H1);
         placePiece(F1, Piece(WHITE, ROOK));
-    } else if (startSquare == E1 && endSquare == C1) { // White queenside castling
+    } 
+    else if (startSquare == E1 && endSquare == C1) { // White queenside castling
         removePiece(A1);
         placePiece(D1, Piece(WHITE, ROOK));
-    } else if (startSquare == E8 && endSquare == G8) { // Black kingside castling
+
+    } 
+    else if (startSquare == E8 && endSquare == G8) { // Black kingside castling
         removePiece(H8);
         placePiece(F8, Piece(BLACK, ROOK));
-    } else if (startSquare == E8 && endSquare == C8) { // Black queenside castling
+    } 
+    else if (startSquare == E8 && endSquare == C8) { // Black queenside castling
         removePiece(A8);
         placePiece(D8, Piece(BLACK, ROOK));
     }
 }
 
-void ChessBoard::handlePromotion(int endSquare, Color color) {
+void ChessBoard::handlePromotion(int endSquare, Color color, PieceType t) {
     removePiece(endSquare);
-    placePiece(endSquare, Piece(color, QUEEN)); // Assuming promotion to a queen will change later
+    placePiece(endSquare, Piece(color, t));
 }
-
 
 void ChessBoard::perft(int depth) {
     if (depth == 0) {
@@ -1112,9 +1182,17 @@ void ChessBoard::setBoardFromFEN(const std::string& fen) {
     canBlackCastleKingSide = (castlingAvailability.find('k') != std::string::npos);
     canBlackCastleQueenSide = (castlingAvailability.find('q') != std::string::npos);
 
+    if (enPassantTarget != "-") {
+        int file = enPassantTarget[0] - 'a';
+        enPassantFile = file;
+    } else {
+        enPassantFile = -1;
+    }
+
     updateBoards();
     saveBoardState();
 }
+
 
 void ChessBoard::clearBitForAllPieces(int square, Color color)
 {
@@ -1189,36 +1267,195 @@ char ChessBoard::pieceToChar(Piece piece)
     }
 }
 
-void ChessBoard::exploreA2A4Branch(int depth) {
-    if (depth == 0) {
-        nodes++;
-        return;
-    }
+// void ChessBoard::exploreA2A4Branch(int depth) {
+//     if (depth == 0) {
+//         nodes++;
+//         return;
+//     }
 
-    std::vector<Move> moveList;
-    generateMoves(colorToMove, moveList);
+//     std::vector<Move> moveList;
+//     generateMoves(colorToMove, moveList);
 
-    for (auto& move : moveList) {
-        if (depth == 4 && !(move.startingSquare == 10 && move.endSquare == 26)) {
-            continue; 
-        }
+//     for (auto& move : moveList) {
+//         if (depth == 4 && !(move.startingSquare == 10 && move.endSquare == 26)) {
+//             continue; 
+//         }
 
-        saveBoardState();
-        if (makeAMove(move)) {
-            printMove(move.startingSquare, move.endSquare);
-            std::cout << "  nodes: " << nodes << std::endl;
-            printChessBoard();
+//         saveBoardState();
+//         if (makeAMove(move)) {
+//             printMove(move.startingSquare, move.endSquare);
+//             std::cout << "  nodes: " << nodes << std::endl;
+//             printChessBoard();
             
-            while (true) {
-                char ch = _getch();
-                if (ch == ' ') {
-                    break;
-                }
-            }
+//             while (true) {
+//                 char ch = _getch();
+//                 if (ch == ' ') {
+//                     break;
+//                 }
+//             }
 
-            exploreA2A4Branch(depth - 1);
-            undoMove();
+//             exploreA2A4Branch(depth - 1);
+//             undoMove();
+//         }
+//         restoreBoardState();
+//     }
+// }
+
+void ChessBoard::initializeHashKeys() {
+    for (int color = 0; color < 2; ++color) {
+        for (int piece = 0; piece < 6; ++piece) {
+            for (int square = 0; square < 64; ++square) {
+                zorbristTable[color][piece][square] = randomUInt64();
+            }
         }
-        restoreBoardState();
     }
+
+    turnKey = randomUInt64();
+
+    for (int i = 0; i < 4; ++i) {
+        castlingKeys[i] = randomUInt64();
+    }
+
+    for (int i = 0; i < 8; ++i) {
+        enPassantKeys[i] = randomUInt64();
+    }
+}
+unsigned long long ChessBoard::generateInitialHash() const {
+    unsigned long long hash = 0;
+
+    for (int square = 0; square < 64; ++square) {
+        auto piece = getPiece(square);
+        if (piece.type != EMPTY) {
+            hash ^= zorbristTable[piece.color][piece.type][square];
+        }
+    }
+
+    if (colorToMove == WHITE) {
+        hash ^= turnKey;
+    }
+
+    if (canWhiteCastleKingSide) {
+        hash ^= castlingKeys[0];
+    }
+    if (canWhiteCastleQueenSide) {
+        hash ^= castlingKeys[1];
+    }
+    if (canBlackCastleKingSide) {
+        hash ^= castlingKeys[2];
+    }
+    if (canBlackCastleQueenSide) {
+        hash ^= castlingKeys[3];
+    }
+
+    if (enPassantFile >= 0) {
+        hash ^= enPassantKeys[enPassantFile];
+    }
+
+    return hash;
+}
+
+unsigned long long ChessBoard::updateHash(unsigned long long hash, const Move& move) const {
+    hash ^= zorbristTable[move.movingPieceColor][move.movingPieceType][move.startingSquare];
+
+    if (move.capturedPiece.type != EMPTY) {
+        if(move.enpassant){
+            hash ^= zorbristTable[move.capturedPiece.color][move.capturedPiece.type][lastMove.endSquare];
+        }
+        else{
+        hash ^= zorbristTable[move.capturedPiece.color][move.capturedPiece.type][move.endSquare];
+        }
+    }
+
+    if (move.isPromotion) {
+        hash ^= zorbristTable[move.movingPieceColor][move.promotedPieceType][move.endSquare];
+    } 
+    else {
+        hash ^= zorbristTable[move.movingPieceColor][move.movingPieceType][move.endSquare];
+    }
+
+    // Handle castling
+    if (move.castling) {
+        int rookStartingSquare = -1, rookEndingSquare = -1;
+        if (move.movingPieceColor == WHITE) {
+            if (move.endSquare == 1) {
+                rookStartingSquare = 0;
+                rookEndingSquare = 2;
+            } else if (move.endSquare == 5) {
+                rookStartingSquare = 7;
+                rookEndingSquare = 4;
+            }
+        } 
+        else {
+            if (move.endSquare == 57) {
+                rookStartingSquare = 56;
+                rookEndingSquare = 58;
+            } 
+            else if (move.endSquare == 61) {
+                rookStartingSquare = 63;
+                rookEndingSquare = 60;
+            }
+        }
+
+        if (rookStartingSquare >= 0 && rookStartingSquare <= 63 && rookEndingSquare >= 0 && rookEndingSquare <= 63) {
+            hash ^= zorbristTable[move.movingPieceColor][ROOK][rookStartingSquare];
+            hash ^= zorbristTable[move.movingPieceColor][ROOK][rookEndingSquare];
+        }
+    }
+
+    if (move.movingPieceType == KING) {
+        if (move.movingPieceColor == WHITE) {
+            if (canWhiteCastleKingSide) {
+                hash ^= castlingKeys[0];
+            }
+            if (canWhiteCastleQueenSide) {
+                hash ^= castlingKeys[1];
+            }
+        } 
+        else {
+            if (canBlackCastleKingSide) {
+                hash ^= castlingKeys[2];
+            }
+            if (canBlackCastleQueenSide) {
+                hash ^= castlingKeys[3];
+            }
+        }
+    }
+
+    if (move.movingPieceType == ROOK) {
+        if (move.startingSquare == H1 && move.movingPieceColor == WHITE && canWhiteCastleKingSide) {
+            hash ^= castlingKeys[0];
+        } 
+        else if (move.startingSquare == A1 && move.movingPieceColor == WHITE && canWhiteCastleQueenSide) {
+            hash ^= castlingKeys[1];
+        } 
+        else if (move.startingSquare == H8 && move.movingPieceColor == BLACK && canBlackCastleKingSide) {
+            hash ^= castlingKeys[2];
+        } 
+        else if (move.startingSquare == A8 && move.movingPieceColor == BLACK && canBlackCastleQueenSide) {
+            hash ^= castlingKeys[3];
+        }
+    }
+
+    if(move.capturedPiece.type == ROOK){
+            if (move.endSquare == H1 && move.movingPieceColor == BLACK && canWhiteCastleKingSide) {
+            hash ^= castlingKeys[0];
+        } 
+        else if (move.endSquare == A1 && move.movingPieceColor == BLACK && canWhiteCastleQueenSide) {
+            hash ^= castlingKeys[1];
+        } 
+        else if (move.endSquare == H8 && move.movingPieceColor == WHITE && canBlackCastleKingSide) {
+            hash ^= castlingKeys[2];
+        } 
+        else if (move.endSquare == A8 && move.movingPieceColor == WHITE && canBlackCastleQueenSide) {
+            hash ^= castlingKeys[3];
+        }
+    }
+
+    if (enPassantFile >= 0) {
+        hash ^= enPassantKeys[enPassantFile];
+    }
+
+    hash ^= turnKey;
+
+    return hash;
 }
