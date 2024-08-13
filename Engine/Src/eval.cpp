@@ -5,8 +5,14 @@ using namespace std::chrono;
 
 #define FLIP(sq) ((sq)^56)
 
-int middleGamePieceValues[6] = { 100, 500, 320, 330, 900,  0 };
-int endGamePieceValues[6] = { 120, 520, 300, 320, 900, 0 };
+#define mateValue 49000
+#define mateScore 48000
+
+int middleGamePieceValues[6] = { 150, 550, 400, 450, 1000, 0 }; // Increased Knight, Bishop, and Rook values for more activity
+int endGamePieceValues[6] = { 120, 520, 330, 370, 950, 0 };
+
+vector<int> centerSquares = {D4, D5, E4, E4};
+vector<int> semiCenterSquares = {C3, C4, F3, F4, C5, C6, F5, F6};
 
 
 const int middleGamePawnTable[64] = {
@@ -141,6 +147,16 @@ const int endGameKingTable[64] = {
     -53, -34, -21, -11, -28, -14, -24, -43
 };
 
+const int isolatedPawnPenalty[2] = {-30, -25};
+const int doublePawnPenalty[2] = {-25, -22};
+
+const int middleGamepassedPawnBonus[8] = {0, 15, 30, 45, 60, 80, 120, 250};
+const int endGamepassedPawnBonus[8] = {0, 30, 50, 70, 100, 150, 250, 300};
+
+const int openFileBonus[2] = {30, 50}; 
+const int semiOpenFileBonus[2] = {20, 40};
+
+
 const int* middleGameTables[6] =
 {
     middleGamePawnTable,
@@ -175,7 +191,7 @@ vector<vector<vector<int>>> historyMoves(2, vector<vector<int>>(6, vector<int>(6
 
 int Evaluation::evaluate(const ChessBoard& board)
 {
-    return evaluatePieceSquareTables(board, 0) + evaluateMaterial(board, 1);
+    return evaluateMaterial(board, 1) + structuralEvaluation(board, 0) + evaluatePieceSquareTables(board, 1); + mobilityAndCenterControl(board, 1);
 }
 
 int Evaluation::evaluateMaterial(const ChessBoard &board, bool middleGame) 
@@ -196,7 +212,8 @@ int Evaluation::evaluateMaterial(const ChessBoard &board, bool middleGame)
     return score;
 }
 
-void Evaluation::initializePieceSquareTables() {
+void Evaluation::initializePieceSquareTables() 
+{
     for (int pieceType = PieceType::PAWN; pieceType <= PieceType::KING; ++pieceType) {
         for (int square = 0; square < 64; ++square) {
             middleGamePreComputedValues[WHITE][pieceType][square] = middleGameTables[pieceType][square];
@@ -207,8 +224,8 @@ void Evaluation::initializePieceSquareTables() {
     }
 }
 
-
-int Evaluation::evaluatePieceSquareTables(const ChessBoard &board, bool isEndGame) {
+int Evaluation::evaluatePieceSquareTables(const ChessBoard &board, bool isMiddleGame) 
+{
     int score = 0;
 
     for (int pieceType = PieceType::PAWN; pieceType <= PieceType::KING; ++pieceType) {
@@ -218,7 +235,14 @@ int Evaluation::evaluatePieceSquareTables(const ChessBoard &board, bool isEndGam
         while (whitePieceBoard.getBoard()) {
             int square = whitePieceBoard.LS1B();
             whitePieceBoard.flipBit(square);
-            if (isEndGame) {
+            // if (pieceType == PieceType::KNIGHT) {
+            //     int knightScore = isMiddleGame ? middleGamePreComputedValues[WHITE][pieceType][63-square] 
+            //                                    : endGamePreComputedValues[WHITE][pieceType][63-square];
+            //     std::cout << "White knight on square " << square 
+            //               << ", score: " << knightScore 
+            //               << ", total score: " << score + knightScore << "\n";
+            // }
+            if (!isMiddleGame) {
                 score += endGamePreComputedValues[WHITE][pieceType][63-square];
             } 
             else {
@@ -229,7 +253,14 @@ int Evaluation::evaluatePieceSquareTables(const ChessBoard &board, bool isEndGam
         while (blackPieceBoard.getBoard()) {
             int square = blackPieceBoard.LS1B();
             blackPieceBoard.flipBit(square);
-            if (isEndGame) {
+            // if (pieceType == PieceType::KNIGHT) {
+            //     int knightScore = isMiddleGame ? middleGamePreComputedValues[BLACK][pieceType][63-square] 
+            //                                    : endGamePreComputedValues[BLACK][pieceType][63-square];
+            //     std::cout << "Black knight on square " << square 
+            //               << ", score: " << -knightScore 
+            //               << ", total score: " << score - knightScore << "\n";
+            // }
+            if (!isMiddleGame) {
                 score -= endGamePreComputedValues[BLACK][pieceType][63-square];
             } 
 
@@ -242,7 +273,258 @@ int Evaluation::evaluatePieceSquareTables(const ChessBoard &board, bool isEndGam
     return score;
 }
 
-int Evaluation::quiescenceSearch(ChessBoard &board, int whitesGuaranteedBestMove, int blacksGuaranteedBestMove, bool player) {
+int Evaluation::structuralEvaluation(const ChessBoard& board, bool isMiddleGame) 
+{
+    int score = 0;
+    auto whitePawns = board.getPieceBoard(Piece(WHITE, PAWN));
+    auto blackPawns = board.getPieceBoard(Piece(BLACK, PAWN));
+    auto whiteRooks = board.getPieceBoard(Piece(WHITE, ROOK));
+    auto blackRooks = board.getPieceBoard(Piece(BLACK, ROOK));
+    auto whiteKing = board.getPieceBoard(Piece(WHITE, KING));
+    auto blackKing = board.getPieceBoard(Piece(WHITE, KING));
+    int whiteFilePawnCount[8] = {0};
+    int blackFilePawnCount[8] = {0};
+
+    int centralSquareBonus = 10;
+    int semiCentralSquareBonus = 5;
+
+
+    for (int file = 0; file < 8; file++) {
+        auto currentFile = board.fileMasks[file];
+        auto whitePawnsOnFile = currentFile & whitePawns;
+        auto blackPawnsOnFile = currentFile & blackPawns;
+        int whitePawnCount = __builtin_popcountll(whitePawnsOnFile);
+        int blackPawnCount = __builtin_popcountll(blackPawnsOnFile);
+
+        whiteFilePawnCount[file] = whitePawnCount;
+        blackFilePawnCount[file] = blackPawnCount;  
+
+        if (whitePawnCount > 1) {
+            score += whitePawnCount * (isMiddleGame ? doublePawnPenalty[0] : doublePawnPenalty[1]);
+        }
+
+        if (blackPawnCount > 1) {
+            score -= blackPawnCount * (isMiddleGame ? doublePawnPenalty[0] : doublePawnPenalty[1]);
+        }
+
+        bool isOpenFile = (whitePawnsOnFile == 0) && (blackPawnsOnFile == 0);
+        bool isWhiteSemiOpenFile = (whitePawnsOnFile == 0) && (blackPawnsOnFile != 0);
+        bool isBlackSemiOpenFile = (blackPawnsOnFile == 0) && (whitePawnsOnFile != 0);
+
+        auto whiteRooksOnFile = currentFile & whiteRooks;
+        auto blackRooksOnFile = currentFile & blackRooks;
+
+        if(whiteRooksOnFile){
+            if(isOpenFile){
+                score += openFileBonus[isMiddleGame ? 0 : 1];
+            }
+            else if(isWhiteSemiOpenFile){
+                score += semiOpenFileBonus[isMiddleGame ? 0 : 1];
+            }
+        }
+        if(blackRooksOnFile){
+            if(isOpenFile){
+                score -= openFileBonus[isMiddleGame ? 0 : 1];
+            }
+            else if(isBlackSemiOpenFile){
+                score -= semiOpenFileBonus[isMiddleGame ? 0 : 1];
+            }
+        }
+
+        if(whiteKing & currentFile){
+            if(isOpenFile){
+                score -= openFileBonus[isMiddleGame ? 0 : 1] + 100;
+            }
+            else if(isWhiteSemiOpenFile){
+                score -= semiOpenFileBonus[isMiddleGame ? 0 : 1] + 100;
+            }
+        }
+
+        if(blackKing & currentFile){
+            if(isOpenFile){
+                score += openFileBonus[isMiddleGame ? 0 : 1] + 100;
+            }
+            else if(isBlackSemiOpenFile){
+                score += semiOpenFileBonus[isMiddleGame ? 0 : 1] + 100;
+            }
+        }
+
+    }
+
+    auto whitePawnBoard = BitBoard(whitePawns);
+    auto blackPawnBoard = BitBoard(blackPawns);
+
+    for (int centralSquare : centerSquares) {
+        if (whitePawnBoard.getBoard() & (1ULL << centralSquare)) {
+            score += centralSquareBonus;
+        }
+    }
+
+    for (int nearCentralSquare : semiCenterSquares) {
+        if (whitePawnBoard.getBoard() & (1ULL << nearCentralSquare)) {
+            score += semiCentralSquareBonus;
+        }
+    }
+
+    for (int centralSquare : centerSquares) {
+        if (blackPawnBoard.getBoard() & (1ULL << centralSquare)) {
+            score -= centralSquareBonus;
+        }
+    }
+
+    for (int nearCentralSquare : semiCenterSquares) {
+        if (blackPawnBoard.getBoard() & (1ULL << nearCentralSquare)) {
+            score -= semiCentralSquareBonus;
+        }
+    }
+
+    while(whitePawnBoard.getBoard()) {
+        auto square = whitePawnBoard.LS1B();
+        whitePawnBoard.flipBit(square);
+        if (!(board.isolatedMasks[square] & whitePawns)) {
+            score += isolatedPawnPenalty[(isMiddleGame ? 0 : 1)];
+        }
+        if (!(board.whitePassedMasks[square] & blackPawns)) {
+            int rank = square / 8;
+            score +=  (isMiddleGame ? middleGamepassedPawnBonus[rank] : endGamepassedPawnBonus[rank]);
+        }
+    }
+
+    while(blackPawnBoard.getBoard()) {
+        auto square = blackPawnBoard.LS1B();
+        blackPawnBoard.flipBit(square);
+        if (!(board.isolatedMasks[square] & blackPawns)) {
+            score -= isolatedPawnPenalty[(isMiddleGame ? 0 : 1)];
+        }
+        if (!(board.blackPassedMasks[square] & whitePawns)) {
+            int rank = square / 8;
+            score -=  (isMiddleGame ? middleGamepassedPawnBonus[7 - rank] : endGamepassedPawnBonus[7 - rank]);
+        }
+    }
+
+    return score;
+}
+int Evaluation::mobilityAndCenterControl(const ChessBoard& board, bool isMiddleGame)
+{
+    int score = 0;
+    auto allPieces = board.getAllPieces();
+    auto whiteBishops = BitBoard(board.getPieceBoard(Piece(WHITE, BISHOP)));
+    auto blackBishops = BitBoard(board.getPieceBoard(Piece(BLACK, BISHOP)));
+    auto whiteQueen = BitBoard(board.getPieceBoard(Piece(WHITE, QUEEN)));
+    auto blackQueen = BitBoard(board.getPieceBoard(Piece(BLACK, QUEEN)));
+    auto whiteKnights = BitBoard(board.getPieceBoard(Piece(WHITE, KNIGHT)));
+    auto blackKnights = BitBoard(board.getPieceBoard(Piece(WHITE, KNIGHT)));
+
+    int bishopMobilityBonus = isMiddleGame ? 5 : 3;
+    int queenMobilityBonus = isMiddleGame ? 3 : 1; 
+    int centralSquareBonus = 10;
+    int semiCentralSquareBonus = 5;
+
+    while(whiteBishops.getBoard()){
+        auto square = whiteBishops.LS1B();
+        whiteBishops.flipBit(square);
+        auto attackBoard = board.bishopRestrictedAttackMasks(square, allPieces);
+        int range = __builtin_popcountll(attackBoard);
+        score += range * bishopMobilityBonus;
+
+        for (int centralSquare : centerSquares) {
+            if (attackBoard & (1ULL << centralSquare)) {
+                score += centralSquareBonus;
+            }
+        }
+        for (int nearCentralSquare : semiCenterSquares) {
+            if (attackBoard & (1ULL << nearCentralSquare)) {
+                score += semiCentralSquareBonus;
+            }
+        }
+
+    }
+    
+    while(blackBishops.getBoard()){
+        auto square = blackBishops.LS1B();
+        blackBishops.flipBit(square);
+        auto attackBoard = board.bishopRestrictedAttackMasks(square, allPieces);
+        int range = __builtin_popcountll(attackBoard);
+        score -= range * bishopMobilityBonus;
+
+        for (int centralSquare : centerSquares) {
+            if (attackBoard & (1ULL << centralSquare)) {
+                score += centralSquareBonus;
+            }
+        }
+        for (int nearCentralSquare : semiCenterSquares) {
+            if (attackBoard & (1ULL << nearCentralSquare)) {
+                score += semiCentralSquareBonus;
+            }
+        }
+    }
+
+    while(whiteKnights.getBoard()){
+        auto square = whiteKnights.LS1B();
+        whiteKnights.flipBit(square);
+        auto attackBoard = board.generateKnightAttacks(square) & board.getAllPieces();
+
+        for (int centralSquare : centerSquares) {
+            if (attackBoard & (1ULL << centralSquare)) {
+                score += centralSquareBonus;
+            }
+        }
+        for (int nearCentralSquare : semiCenterSquares) {
+            if (attackBoard & (1ULL << nearCentralSquare)) {
+                score += semiCentralSquareBonus;
+            }
+        }
+    }    
+    
+    while(blackKnights.getBoard()){
+        auto square = blackKnights.LS1B();
+        blackKnights.flipBit(square);
+        auto attackBoard = board.generateKnightAttacks(square) & board.getAllPieces();
+
+        for (int centralSquare : centerSquares) {
+            if (attackBoard & (1ULL << centralSquare)) {
+                score -= centralSquareBonus;
+            }
+        }
+        for (int nearCentralSquare : semiCenterSquares) {
+            if (attackBoard & (1ULL << nearCentralSquare)) {
+                score -= semiCentralSquareBonus;
+            }
+        }
+    }
+
+    while(whiteQueen.getBoard()){
+        auto square = whiteQueen.LS1B();
+        whiteQueen.flipBit(square);
+        auto attackBoard = board.queenRestrictedAttackMasks(square, allPieces);
+        int range = __builtin_popcountll(attackBoard);
+        score += range * queenMobilityBonus;
+    }
+
+    while(blackQueen.getBoard()){
+        auto square = blackQueen.LS1B();
+        blackQueen.flipBit(square);
+        auto attackBoard = board.queenRestrictedAttackMasks(square, allPieces);
+        int range = __builtin_popcountll(attackBoard);
+        score -= range * queenMobilityBonus; 
+    }
+    
+    return score;
+}
+
+
+void Evaluation::initializeMVVLVA()
+{
+    for(int victim = PAWN; victim <= KING; victim++){
+        for(int attacker = PAWN; attacker <= KING; attacker++){
+            middleGameMVVLVA[victim][attacker] = middleGamePieceValues[victim] + 5000 - middleGamePieceValues[attacker];
+            endGameMVVLVA[victim][attacker] = endGamePieceValues[victim] + 5000 - endGamePieceValues[attacker];
+        }
+    }
+}
+
+int Evaluation::quiescenceSearch(ChessBoard &board, int whitesGuaranteedBestMove, int blacksGuaranteedBestMove, bool player) 
+{
     //evaluate at leaf nodes
     int leafNodeEval = evaluate(board);
 
@@ -306,25 +588,36 @@ int Evaluation::quiescenceSearch(ChessBoard &board, int whitesGuaranteedBestMove
     return player ? whitesGuaranteedBestMove : blacksGuaranteedBestMove;
 }
 
-void Evaluation::initializeMVVLVA()
+SearchResult Evaluation::minMax(ChessBoard &board, int depth, int whitesGuaranteedBestMove, int blacksGuaranteedBestMove, bool player, vector<Move>& pv) 
 {
-    for(int victim = PAWN; victim <= KING; victim++){
-        for(int attacker = PAWN; attacker <= KING; attacker++){
-            middleGameMVVLVA[victim][attacker] = middleGamePieceValues[victim] + 5000 - middleGamePieceValues[attacker];
-            endGameMVVLVA[victim][attacker] = endGamePieceValues[victim] + 5000 - endGamePieceValues[attacker];
-        }
-    }
-}
+    unsigned long long hash = board.currentHash;
+    TranspositionTableEntry entry;
 
-SearchResult Evaluation::minMax(ChessBoard &board, int depth, int whitesGuaranteedBestMove, int blacksGuaranteedBestMove, bool player, vector<Move>& pv) {
-    //check the leaf nodes and avoid horizon effect
-    if (depth == 0) {
+    if (depth == 0) {//check the leaf nodes and avoid horizon effect
         int eval = quiescenceSearch(board, whitesGuaranteedBestMove, blacksGuaranteedBestMove, player);
         return {eval, Move(), pv};
     }
 
+    if(entryRetrieval(hash, entry, depth, whitesGuaranteedBestMove, blacksGuaranteedBestMove)){
+        if (entry.evaluatedDepth >= depth) {
+            if (entry.moveFlag == EXACT) {
+                return {entry.positionScore, entry.bestMove, entry.pv};
+            } 
+            else if (entry.moveFlag == LOWER) {
+                whitesGuaranteedBestMove = max(whitesGuaranteedBestMove, entry.positionScore);
+            } 
+            else if (entry.moveFlag == UPPER) {
+                blacksGuaranteedBestMove = min(blacksGuaranteedBestMove, entry.positionScore);
+            }
+            if (whitesGuaranteedBestMove >= blacksGuaranteedBestMove) {
+                return {entry.positionScore, entry.bestMove, entry.pv};
+            }
+        }
+    }
+
     bool couldAMoveBeMade = false;
     SearchResult result;
+    BoundFlag flag = LOWER;
 
     if (player) { // WHITE
         int maxEval = INT_MIN;
@@ -333,93 +626,95 @@ SearchResult Evaluation::minMax(ChessBoard &board, int depth, int whitesGuarante
         vector<Move> currentPV;
         board.generateMoves(WHITE, moveList);
         bool pvNodeFound = 0;
+        int i = 0;
 
         sortMove(moveList, depth, pv);
 
-        for (auto move : moveList) {  //iterate through moves
+        for (auto move : moveList) {
+            i++;
             board.saveBoardState();
             if (!board.makeAMove(move)) {
                 continue;
             }
             couldAMoveBeMade = true;
 
-            if(pvNodeFound){ //if a pv node is found, search it with a null window, to essentially "prove" that it is the best move
-               result = minMax(board, depth - 1, whitesGuaranteedBestMove, whitesGuaranteedBestMove + 1, !player, currentPV);
-               if(result.evaluation > whitesGuaranteedBestMove && result.evaluation < blacksGuaranteedBestMove){ //if it turns out that it isnt the best move, run a full search on it
-                result = minMax(board, depth - 1, whitesGuaranteedBestMove, blacksGuaranteedBestMove, !player, currentPV);
-               }
+            if (pvNodeFound) { //if a PV node is found, search it with a null window, to essentially "prove" that it is the best move
+                result = minMax(board, depth - 1, whitesGuaranteedBestMove, whitesGuaranteedBestMove + 1, !player, currentPV);
+                if (result.evaluation > whitesGuaranteedBestMove && result.evaluation < blacksGuaranteedBestMove) { //if it turns out that it isn't the best move, run a full search on it
+                    result = minMax(board, depth - 1, whitesGuaranteedBestMove, blacksGuaranteedBestMove, !player, currentPV);
+                }
+            } else { //regular moves get a regular search
+                int reduction = (i > 0 && depth > 2) ? 2 : 0; //apply LMR for non-PV moves
+                result = minMax(board, depth - 1 - reduction, whitesGuaranteedBestMove, blacksGuaranteedBestMove, !player, currentPV);
             }
-            else{ //regular moves get a regualr search
-                result = minMax(board, depth - 1, whitesGuaranteedBestMove, blacksGuaranteedBestMove, !player, currentPV);
-            }
-            
+
             board.restoreBoardState();
 
-            if (result.evaluation > maxEval) { //you found the best mvoe in the position
+            if (result.evaluation > maxEval) { //found the best move in the position
                 maxEval = result.evaluation;
                 bestMove = move;
                 pv.clear();
                 pv.push_back(bestMove);
-                pv.insert(pv.end(), result.pv.begin(), result.pv.end()); //update the pv
-                pvNodeFound = 1; //you found a pv node
+                pv.insert(pv.end(), result.pv.begin(), result.pv.end()); //update the PV
+                pvNodeFound = 1; //found a PV node
+                flag = EXACT;  
             }
 
             whitesGuaranteedBestMove = max(whitesGuaranteedBestMove, maxEval);  //update alpha bound
             if (blacksGuaranteedBestMove <= whitesGuaranteedBestMove) {  //Beta cutoff: prune the remaining branches as Black will not allow this move
                 updateHistoryMoves(depth, move); //update history and killer moves on cutoff
-                updateKillerMoves(depth, move);  
+                updateKillerMoves(depth, move);
+                flag = LOWER;
                 break;
             }
         }
         if (couldAMoveBeMade) {
-            // Debug print to show the PV at the current depth
-            // cout << "Depth: " << depth << ", PV: ";
-            // for (const auto& mv : pv) {
-            //     board.printMove(mv.startingSquare, mv.endSquare);
-            //     cout << " ";
-            // }
-            // cout << endl;
+            flag = (maxEval >= blacksGuaranteedBestMove) ? LOWER : ((maxEval <= whitesGuaranteedBestMove) ? UPPER : EXACT);
+            entry = {hash, depth, maxEval, pv, bestMove, flag};
+            insertToTable(hash, entry);            
             return {maxEval, bestMove, pv};
-        } 
-
-        else {
+        } else {
             int kingSquare = BitBoard(board.getPieceBoard(Piece(WHITE, KING))).LS1B();
             bool inCheck = board.isSquareAttacked(kingSquare, BLACK);
             if (inCheck) {
-                return {INT_MIN, Move(), pv}; //Checkmate
+                entry = {hash, depth, -mateValue, pv, Move(), EXACT};
+                insertToTable(hash, entry);
+                return {-mateValue + depth, Move(), pv}; //checkmate
             } else {
-                return {0, Move(), pv}; //Stalemate
+                entry = {hash, depth, 0, pv, Move(), EXACT};
+                insertToTable(hash, entry);
+                return {0, Move(), pv}; //stalemate
             }
         }
-    } 
-    
-    else { // BLACK
+    } else { // BLACK
         int minEval = INT_MAX;
         Move bestMove;
         vector<Move> moveList;
         vector<Move> currentPV;
         board.generateMoves(BLACK, moveList);
         bool pvNodeFound = false;
+        int i;
 
         sortMove(moveList, depth, pv);
 
         for (auto move : moveList) {
+            i++;
             board.saveBoardState();
             if (!board.makeAMove(move)) {
                 continue;
             }
             couldAMoveBeMade = true;
 
-            if(pvNodeFound){
-               result = minMax(board, depth - 1, blacksGuaranteedBestMove - 1, blacksGuaranteedBestMove, !player, currentPV);
-               if(result.evaluation > whitesGuaranteedBestMove && result.evaluation < blacksGuaranteedBestMove){
-                result = minMax(board, depth - 1, whitesGuaranteedBestMove, blacksGuaranteedBestMove, !player, currentPV);
-               }
+            if (pvNodeFound) {
+                result = minMax(board, depth - 1, blacksGuaranteedBestMove - 1, blacksGuaranteedBestMove, !player, currentPV);
+                if (result.evaluation > whitesGuaranteedBestMove && result.evaluation < blacksGuaranteedBestMove) {
+                    result = minMax(board, depth - 1, whitesGuaranteedBestMove, blacksGuaranteedBestMove, !player, currentPV);
+                }
+            } else {
+                int reduction = (i > 0 && depth > 2) ? 2 : 0;
+                result = minMax(board, depth - 1 - reduction, whitesGuaranteedBestMove, blacksGuaranteedBestMove, !player, currentPV);
             }
-            else{
-                result = minMax(board, depth - 1, whitesGuaranteedBestMove, blacksGuaranteedBestMove, !player, currentPV);
-            }           
-            
+
             board.restoreBoardState();
 
             if (result.evaluation < minEval) {
@@ -429,32 +724,33 @@ SearchResult Evaluation::minMax(ChessBoard &board, int depth, int whitesGuarante
                 pv.push_back(bestMove);
                 pv.insert(pv.end(), result.pv.begin(), result.pv.end());
                 pvNodeFound = 1;
+                flag = EXACT;
             }
 
             blacksGuaranteedBestMove = min(blacksGuaranteedBestMove, minEval); //update beta bound
             if (blacksGuaranteedBestMove <= whitesGuaranteedBestMove) { //Alpha cutoff: prune the remaining branches as White will not allow this move
+                flag = UPPER;
                 updateHistoryMoves(depth, move); //update history and killer moves on cutoff
-                updateKillerMoves(depth, move);  
+                updateKillerMoves(depth, move);
                 break;
             }
         }
         if (couldAMoveBeMade) {
-            // Debug print to show the PV at the current depth
-            // cout << "Depth: " << depth << ", PV: ";
-            // for (const auto& mv : pv) {
-            //     board.printMove(mv.startingSquare, mv.endSquare);
-            //     cout << " ";
-            // }
-            // cout << endl;
+            flag = (minEval <= whitesGuaranteedBestMove) ? UPPER : ((minEval >= blacksGuaranteedBestMove) ? LOWER : EXACT);
+            entry = {hash, depth, minEval, pv, bestMove, flag};
+            insertToTable(hash, entry);
             return {minEval, bestMove, pv};
-        } 
-        else {
+        } else {
             int kingSquare = BitBoard(board.getPieceBoard(Piece(BLACK, KING))).LS1B();
             bool inCheck = board.isSquareAttacked(kingSquare, WHITE);
             if (inCheck) {
-                return {INT_MAX, Move(), pv}; //Checkmate
+                entry = {hash, depth, mateValue, pv, Move(), EXACT};
+                insertToTable(hash, entry);
+                return {mateValue - depth, Move(), pv}; 
             } else {
-                return {0, Move(), pv}; //Stalemate
+                entry = {hash, depth, 0, pv, Move(), EXACT};
+                insertToTable(hash, entry);
+                return {0, Move(), pv}; 
             }
         }
     }
@@ -465,10 +761,28 @@ SearchResult Evaluation::iterativeDeepeningSearch(ChessBoard &board, int depth, 
     vector<Move> pv;
 
     auto start = high_resolution_clock::now();
+    int aspirationWindow = 50;
+
+    int previousEval = 0; 
 
     for (int currentDepth = 1; currentDepth <= depth; ++currentDepth) {
         cout << "Starting search at depth: " << currentDepth << endl;
-        finalResult = minMax(board, currentDepth, INT_MIN, INT_MAX, player, pv);
+        int alpha = previousEval - aspirationWindow;
+        int beta = previousEval + aspirationWindow;
+
+        while (true) {
+            finalResult = minMax(board, currentDepth, alpha, beta, player, pv);
+            if (finalResult.evaluation <= alpha) {
+                alpha = INT_MIN;
+            } else if (finalResult.evaluation >= beta) {
+                beta = INT_MAX;
+            } else {
+                break;
+            }
+        }
+
+        previousEval = finalResult.evaluation;
+
         cout << "Depth: " << currentDepth << " Best Move: ";
         board.printMove(finalResult.bestMove.startingSquare, finalResult.bestMove.endSquare);
         cout << " Evaluation: " << finalResult.evaluation << endl;
@@ -480,7 +794,7 @@ SearchResult Evaluation::iterativeDeepeningSearch(ChessBoard &board, int depth, 
     cout << "Principal Variation: ";
     for (const Move& move : pv) {
         board.printMove(move.startingSquare, move.endSquare);
-        cout << " "<<endl;
+        cout << " " << endl;
     }
 
     cout << "Time taken for search: " << duration.count() << " milliseconds" << endl;
@@ -490,50 +804,53 @@ SearchResult Evaluation::iterativeDeepeningSearch(ChessBoard &board, int depth, 
 
 
 int Evaluation::scoreMove(Move& move, int depth, const vector<Move>& pv) {
-
     if (pv.size() >= depth && move == pv[depth - 1]) {
         return 20000;
     }
 
     if (move == killerMoves[depth][0]) {
         return 10000;
-    } 
-    else if (move == killerMoves[depth][1]) {
-        return 9000;
+    } else if (move == killerMoves[depth][1]) {
+        return 7500;
     }
 
-    auto victim = move.capturedPiece.type;
-    auto attacker = move.movingPieceType;
-    auto historicScore = historyMoves[move.movingPieceColor][move.movingPieceType][move.endSquare];
+    int victim = move.capturedPiece.type;
+    int attacker = move.movingPieceType;
+    int historyScore = historyMoves[move.movingPieceColor][move.movingPieceType][move.endSquare];
 
-    if(middleGame){
-        return middleGameMVVLVA[victim][attacker] + historicScore;
-    }
-    else {
-        return endGameMVVLVA[victim][attacker] + historicScore;
+    int mvvLvaScore = middleGame ? middleGameMVVLVA[victim][attacker] : endGameMVVLVA[victim][attacker];
+    return mvvLvaScore + historyScore;
+}
+
+inline void Evaluation::sortMove(std::vector<Move>& moveList, int depth, const std::vector<Move>& pv) {
+    std::sort(moveList.begin(), moveList.end(), [this, depth, &pv](Move& move1, Move& move2) {
+        return scoreMove(move1, depth, pv) > scoreMove(move2, depth, pv);
+    });
+}
+
+void Evaluation::updateKillerMoves(int depth, const Move& move) {
+    if (move.capturedPiece.type == EMPTY) {
+        if (!(killerMoves[depth][0] == move) && !(killerMoves[depth][1] == move)) {
+            killerMoves[depth][1] = killerMoves[depth][0];
+            killerMoves[depth][0] = move;
+        }
     }
 }
 
-inline void Evaluation::sortMove(vector<Move> &moveList, int depth, const vector<Move>& pv)
+void Evaluation::updateHistoryMoves(int depth, const Move& move) {
+    if (move.capturedPiece.type == EMPTY) {
+        historyMoves[move.movingPieceColor][move.movingPieceType][move.endSquare] += depth * depth;
+    }
+}
+
+void updatePV(vector<Move>& pv, const vector<Move>& childPV, const Move& move) {
+    pv.clear();
+    pv.push_back(move);
+    pv.insert(pv.end(), childPV.begin(), childPV.end());
+}
+
+void Evaluation::initializeKillerMoves() 
 {
-    vector<pair<Move, int>> sortedMoveList;
-    sortedMoveList.reserve(moveList.size());
-
-    for(auto move : moveList){
-        sortedMoveList.emplace_back(make_pair(move, scoreMove(move,depth, pv)));
-    }
-
-    sort(sortedMoveList.begin(), sortedMoveList.end(), [](const pair<Move, int>& pair1, const pair<Move, int>& pair2){
-        return pair1.second > pair2.second;
-    }); //descending order
-
-    moveList.clear(); 
-    for (const auto& scoredMove : sortedMoveList) {
-        moveList.push_back(scoredMove.first);
-    }
-}
-
-void Evaluation::initializeKillerMoves() {
     for (auto& movesAtDepth : killerMoves) {
         movesAtDepth[0] = Move(-1, -1, EMPTY, WHITE, Piece(), EMPTY, false, false, false, false);
         movesAtDepth[1] = Move(-1, -1, EMPTY, WHITE, Piece(), EMPTY, false, false, false, false);
@@ -549,80 +866,51 @@ void Evaluation::initializeHistoryMoves()
     }
 }
 
-void Evaluation::updateKillerMoves(int depth, const Move &move)
+void Evaluation::clearTranspositionTable()
 {
-    if(move.capturedPiece.type == EMPTY){
-        if(!(killerMoves[depth][0] == move) && !(killerMoves[depth][1] == move)){
-            killerMoves[depth][1] = killerMoves[depth][0];
-            killerMoves[depth][0] = move;
+    transpositionTable.clear();
+}
+
+void Evaluation::insertToTable(unsigned long long hash, TranspositionTableEntry &entry) 
+{
+    auto &entriesForHash = transpositionTable[hash];
+    if(entry.positionScore < -mateScore){
+        entry.positionScore -= entry.evaluatedDepth;
+    }
+    if(entry.positionScore > mateScore){
+        entry.positionScore += entry.evaluatedDepth;
+    }
+    auto it = std::find_if(entriesForHash.begin(), entriesForHash.end(), [&](const TranspositionTableEntry &e) {
+        return e.hash == hash;
+    });
+
+    if (it != entriesForHash.end()) {
+        if (entry.evaluatedDepth > it->evaluatedDepth || 
+            (entry.evaluatedDepth == it->evaluatedDepth && entry.moveFlag == EXACT)) {
+            *it = entry;
+        }
+    } else {
+        entriesForHash.push_back(entry); 
+    }
+}
+
+
+bool Evaluation::entryRetrieval(unsigned long long hash, TranspositionTableEntry &entry, int depth, int alpha, int beta) const 
+{
+    auto it = transpositionTable.find(hash);
+    if (it != transpositionTable.end()) {
+        for (const auto &e : it->second) {
+            if (e.evaluatedDepth >= depth) {
+                entry = e;
+                if(entry.positionScore > mateScore){
+                    entry.positionScore -= entry.evaluatedDepth;
+                }
+                if(entry.positionScore < mateScore){
+                    entry.positionScore += entry.evaluatedDepth;
+                }
+                return 1;
+            }
         }
     }
+    return 0;
 }
-
-void Evaluation::updateHistoryMoves(int depth, const Move &move)
-{
-    if(move.capturedPiece.type == EMPTY){
-        historyMoves[move.movingPieceColor][move.movingPieceType][move.endSquare] += depth * depth;
-    }
-}
-
-// void Evaluation::testKillerAndHistoryMoves() {
-//     ChessBoard board;
-
-//     // Initialize the board with a specific FEN
-//     board.initialize();
-//     board.setBoardFromFEN("r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10");
-
-//     // Print the board
-//     board.printChessBoard();
-
-//     // Example search depth
-//     int depth = 5;
-
-//     // Initialize killer and history moves
-//     initializeKillerMoves();
-//     initializeHistoryMoves();
-
-//     // White to move
-//     SearchResult result = search(board, depth, INT_MIN, INT_MAX, true);
-
-//     Move bestMove = result.bestMove;
-
-//     board.printMove(bestMove.startingSquare, bestMove.endSquare);
-//     std::cout << "   ";
-
-//     std::cout << scoreMove(bestMove, depth) << std::endl;
-
-//     // Print killer and history tables
-//     std::cout << "Killer Moves:" << std::endl;
-//     for (int d = 0; d < depth; ++d) {
-//         std::cout << "Depth " << d << ": ";
-//         for (const auto& move : killerMoves[d]) {
-//             if (move.startingSquare != -1) {
-//                 board.printMove(move.startingSquare, move.endSquare);
-//                 std::cout << " ";
-//             }
-//         }
-//         std::cout << std::endl;
-//     }
-
-//     std::cout << "History Moves:" << std::endl;
-//     for (int color = 0; color < 2; ++color) {
-//         for (int pieceType = 0; pieceType < 6; ++pieceType) {
-//             std::cout << "Color " << color << ", Piece " << pieceType << ": ";
-//             for (int square = 0; square < 64; ++square) {
-//                 std::cout << historyMoves[color][pieceType][square] << " ";
-//             }
-//             std::cout << std::endl;
-//         }
-//     }
-// }
-
-
-
-void updatePV(vector<Move> &pv, const vector<Move> &childPV, const Move &move) {
-    pv.clear();
-    pv.push_back(move);
-    pv.insert(pv.end(), childPV.begin(), childPV.end());
-}
-

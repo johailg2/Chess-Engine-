@@ -7,11 +7,13 @@
 #include "attackTables.h"
 
 static const unsigned long long NOT_H_FILE = 0xfefefefefefefefe;
+static const unsigned long long H_FILE = ~NOT_H_FILE;
 static const unsigned long long NOT_GH_FILE = NOT_H_FILE & (NOT_H_FILE << 1);
 static const unsigned long long NOT_A_FILE = 0x7f7f7f7f7f7f7f7f;
 static const unsigned long long NOT_AB_FILE = NOT_A_FILE & (NOT_A_FILE >> 1);
 static const unsigned long long NOT_TOP_ROW = 0x00ffffffffffffff;
 static const unsigned long long NOT_BOTTOM_ROW = 0xffffffffffffff00;
+static const unsigned long long BOTTOM_ROW = ~NOT_BOTTOM_ROW;
 static const unsigned long long ROW_5 = 0x00000000ff000000;
 static const unsigned long long ROW_4 = 0x000000ff00000000;
 
@@ -159,7 +161,17 @@ public:
         return (col == WHITE ? getWhitePieces() : getBlackPieces());
     }
 
+    inline unsigned long long getAllPieces() const{ 
+        return allPieces;
+    }
+
     bool isSquareAttacked(int square, Color color);
+
+    unsigned long long bishopRestrictedAttackMasks(int square, unsigned long long restOfBoard) const;
+    unsigned long long queenRestrictedAttackMasks(int square, unsigned long long restOfBoard) const;
+    unsigned long long generateKnightAttacks(int square) const;
+
+
 
     void generateMoves(Color color, vector<Move>&); 
     void generateCaptureMoves(Color color, vector<Move>& captureList);
@@ -172,6 +184,8 @@ public:
     void perftTest(int depth, int intialDepth);
 
     void undoMove();
+
+    bool makeNullMove();
 
     void setBoardFromFEN(const std::string& fen);
 
@@ -189,9 +203,19 @@ public:
     unsigned long long zorbristTable[2][6][64];
     unsigned long long castlingKeys[4];
     unsigned long long enPassantKeys[8];
-    unsigned long long turnKey;
+    unsigned long long turnKey; //MOVE ALL OF THESE TO PROIVATE ONCE DONE WITH COMPLETE IMPLEMENTATIONS
     int enPassantFile;
     Move lastMove ;
+    bool isThereCheck;
+    Color colorToMove;
+    unordered_map<unsigned long long, int> repetitionTable;
+    bool isThreefoldRepetition(const Move &move) const;
+    
+    unsigned long long fileMasks[64];
+    unsigned long long rankMasks[64];
+    unsigned long long isolatedMasks[64];
+    unsigned long long whitePassedMasks[64];
+    unsigned long long blackPassedMasks[64];
 
 private:
 
@@ -214,16 +238,11 @@ private:
     unsigned long long allWhitePieces;
     unsigned long long allBlackPieces;
     unsigned long long allPieces;
-
-    Color colorToMove;
-
     bool canWhiteCastleKingSide;
     bool canBlackCastleKingSide;
 
     bool canWhiteCastleQueenSide;
     bool canBlackCastleQueenSide;
-
-    bool isThereCheck;
 
     unsigned long long allSquaresAttackedByWhite;
     unsigned long long allSquaresAttackedByBlack;
@@ -248,22 +267,19 @@ private:
     void populatePawnCaptures(Color color, Move lastMove, vector<Move>&);
     void populateQuietPawnMoves(Color color, vector<Move>&);
 
-    unsigned long long generateKnightAttacks(int square);
     void populateKnightMoves(Color color, vector<Move>&, bool captureOnly);
 
     unsigned long long generateKingAttacks(int square);
     void populateKingMoves(Color color, vector<Move>&, bool captureOnly);
 
     unsigned long long bishopAttackMasks(int square);
-    unsigned long long bishopRestrictedAttackMasks(int square, unsigned long long restOfBoard);
     void populateBishopMoves(Color color, vector<Move>&, bool captureOnly);
 
     unsigned long long rookAttackMasks(int square);
-    unsigned long long rookRestrictedAttacksMasks(int square, unsigned long long restOfBoard);
+    unsigned long long rookRestrictedAttacksMasks(int square, unsigned long long restOfBoard) const;
     void populateRookMoves(Color color, vector<Move>&, bool captureOnly);
 
     unsigned long long queenAttackMasks(int square);
-    unsigned long long queenRestrictedAttackMasks(int square, unsigned long long restOfBoard);
     void populateQueenMoves(Color color, vector<Move>&, bool captureOnly);
 
     unsigned long long findMagicNumber(int square, int m, bool bishop);
@@ -282,10 +298,16 @@ private:
     void intializeAllSquaresAttackedByBlack();
 
     vector<Move> enPassantEnable;
-
+    
+    void initializeFileMasks();
+    void initiliazeRankMasks();
+    void initializeIsolatedMasks();
+    void initializeWhitePassedPawnMasks();
+    void initializeBlackPassedPawnMasks();
 
 };
 
 unsigned long long attackMaskToOccupancy(int indexOfOccupancyConfig,int numOfSetBits, BitBoard attackMask);
+
 
 #endif // CHESSBOARD_H

@@ -1,3 +1,4 @@
 C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/chess_engine.dir
+C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/chessBoardWrap.dir
 C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/edit_cache.dir
 C:/Users/johai/Desktop/Chess Engine Attempt/build/CMakeFiles/rebuild_cache.dir

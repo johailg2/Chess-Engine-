@@ -44,14 +44,20 @@
     bool isThereCheck = false;
     whiteBoards = {whitePawns, whiteRooks, whiteKnights, whiteBishops, whiteQueen, whiteKing};
     blackBoards = {blackPawns, blackRooks, blackKnights, blackBishops, blackQueen, blackKing};
-    intializeAllSquaresAttackedByBlack();
-    intializeAllSquaresAttackedByWhite();
 }
 
-void ChessBoard::initialize(){
+void ChessBoard::initialize()
+{
     initializeAllSlidingMasks();
     initializeAttackTables(1);
     initializeAttackTables(0);
+    intializeAllSquaresAttackedByBlack();
+    intializeAllSquaresAttackedByWhite();
+    initializeFileMasks();
+    initiliazeRankMasks();  
+    initializeIsolatedMasks();  
+    initializeWhitePassedPawnMasks();
+    initializeBlackPassedPawnMasks();
     initializeHashKeys();
     currentHash = generateInitialHash();
 
@@ -100,7 +106,8 @@ unsigned long long ChessBoard::getPieceBoard(Piece piece) const
     return 0ULL;
 }
 
-Piece ChessBoard::getPiece(int square) const {
+Piece ChessBoard::getPiece(int square) const 
+{
     for (int i = 0; i < 6; ++i) {
         if (whiteBoards[i] & (1ULL << square)) {
             return Piece(WHITE, static_cast<PieceType>(i));
@@ -178,7 +185,8 @@ unsigned long long ChessBoard::pawnAttacks(int square, Color color)
 }
 
 
-void ChessBoard::populatePawnCaptures(Color color, Move lastMove, vector<Move>& moveList) {
+void ChessBoard::populatePawnCaptures(Color color, Move lastMove, vector<Move>& moveList) 
+{
     BitBoard pawnBoard = (color == WHITE) ? BitBoard(whiteBoards[0]) : BitBoard(blackBoards[0]);
 
     if (lastMove.doublePawn) {
@@ -220,7 +228,8 @@ void ChessBoard::populatePawnCaptures(Color color, Move lastMove, vector<Move>& 
     }
 }
 
-void ChessBoard::populateQuietPawnMoves(Color color, vector<Move>& moveList) {
+void ChessBoard::populateQuietPawnMoves(Color color, vector<Move>& moveList) 
+{
     BitBoard pawnBoard = (color == WHITE) ? BitBoard(whiteBoards[0]) : BitBoard(blackBoards[0]);
 
     while (pawnBoard.getBoard()) {
@@ -262,7 +271,8 @@ void ChessBoard::populateQuietPawnMoves(Color color, vector<Move>& moveList) {
 }
 
 
-unsigned long long ChessBoard::generateKnightAttacks(int square){
+unsigned long long ChessBoard::generateKnightAttacks(int square) const
+{
     unsigned long long attackBoard = 0ULL;
     BitBoard knightBoard;
     knightBoard.setBit(square);
@@ -314,7 +324,8 @@ void ChessBoard::populateKnightMoves(Color color, vector<Move>& moveList, bool c
 
 }
 
-unsigned long long ChessBoard::generateKingAttacks(int square){
+unsigned long long ChessBoard::generateKingAttacks(int square)
+{
     unsigned long long attackBoard = 0ULL;
     BitBoard kingBoard;
     kingBoard.setBit(square);
@@ -333,7 +344,8 @@ unsigned long long ChessBoard::generateKingAttacks(int square){
     return attackBoard;
 }
 
-void ChessBoard::populateKingMoves(Color color, vector<Move>& moveList, bool captureOnly) {
+void ChessBoard::populateKingMoves(Color color, vector<Move>& moveList, bool captureOnly) 
+{
     unsigned long long friendlyBoard = getFriendlyBoard(color);
     unsigned long long opposingBoard = getOpposingBoard(color);
     BitBoard kingBoard = BitBoard((color == WHITE) ? whiteBoards[5] : blackBoards[5]);
@@ -383,7 +395,8 @@ void ChessBoard::populateKingMoves(Color color, vector<Move>& moveList, bool cap
     }
 }
 
-unsigned long long ChessBoard::bishopAttackMasks(int square){
+unsigned long long ChessBoard::bishopAttackMasks(int square)
+{
     unsigned long long attackBoard = 0ULL;
     int movingRow = square / 8;
     int movingCol = square % 8;
@@ -407,7 +420,8 @@ unsigned long long ChessBoard::bishopAttackMasks(int square){
     return attackBoard;
 }
 
-unsigned long long ChessBoard::bishopRestrictedAttackMasks(int square, unsigned long long restOfBoard){
+unsigned long long ChessBoard::bishopRestrictedAttackMasks(int square, unsigned long long restOfBoard) const
+{
     unsigned long long attackBoard = 0ULL;
     int movingRow = square / 8;
     int movingCol = square % 8;
@@ -467,7 +481,8 @@ void ChessBoard::populateBishopMoves(Color color, vector<Move>& moveList, bool c
     }
 }
 
-unsigned long long ChessBoard::rookAttackMasks(int square){
+unsigned long long ChessBoard::rookAttackMasks(int square)
+{
     unsigned long long attackBoard = 0ULL;
     int movingRow = square / 8;
     int movingCol = square % 8;
@@ -491,7 +506,8 @@ unsigned long long ChessBoard::rookAttackMasks(int square){
     return attackBoard;
 }
 
-unsigned long long ChessBoard::rookRestrictedAttacksMasks(int square, unsigned long long restOfBoard){
+unsigned long long ChessBoard::rookRestrictedAttacksMasks(int square, unsigned long long restOfBoard) const
+{
     unsigned long long attackBoard = 0ULL;
     int movingRow = square / 8;
     int movingCol = square % 8;
@@ -552,13 +568,15 @@ void ChessBoard::populateRookMoves(Color color, vector<Move>& moveList, bool cap
     }
 }
 
-unsigned long long ChessBoard::queenAttackMasks(int square){
+unsigned long long ChessBoard::queenAttackMasks(int square)
+{
     auto rookMask = rookAttackMasks(square);
     auto bishopMask = bishopAttackMasks(square);
     return rookMask | bishopMask;
 }
 
-unsigned long long ChessBoard::queenRestrictedAttackMasks(int square, unsigned long long restOfBoard){
+unsigned long long ChessBoard::queenRestrictedAttackMasks(int square, unsigned long long restOfBoard) const
+{
     auto rookMask = rookRestrictedAttacksMasks(square, restOfBoard);
     auto bishopMask = bishopRestrictedAttackMasks(square, restOfBoard);
     return rookMask | bishopMask;
@@ -605,7 +623,8 @@ void ChessBoard::populateQueenMoves(Color color, vector<Move>& moveList, bool ca
   and so on. Using this, we can attach an index to all possible occupancy positions for a given attack mask.
  The function below does the reverse, given an index, it produces the occupancy bitboard. */
 
-unsigned long long attackMaskToOccupancy(int indexOfOccupancyConfig, int numOfSetBits, BitBoard attackMask){
+unsigned long long attackMaskToOccupancy(int indexOfOccupancyConfig, int numOfSetBits, BitBoard attackMask)
+{
     unsigned long long occupancy = 0ULL;
     
     for (int currentSetBitIndex = 0; currentSetBitIndex < numOfSetBits; currentSetBitIndex++){
@@ -630,7 +649,8 @@ unsigned long long randomFewBits(){
     return randomUInt64() & randomUInt64() & randomUInt64();
 }
 
-unsigned long long ChessBoard::findMagicNumber(int square, int relevantBits, bool bishop){
+unsigned long long ChessBoard::findMagicNumber(int square, int relevantBits, bool bishop)
+{
     //declare all variables
     unsigned long long mask = bishop ? bishopAttackMasks(square) : rookAttackMasks(square);
     unsigned long long attackSet[4096], usedAttacks[4096], occupancySet[4096];
@@ -825,16 +845,16 @@ void ChessBoard::intializeAllSquaresAttackedByBlack()
 
 bool ChessBoard::isSquareAttacked(int square, Color color)
 {
-    BitBoard board = 0ULL;
-    board.setBit(square);
     if (color == WHITE) {
-        return (board.getBoard() & allSquaresAttackedByBlack);
+        return (allSquaresAttackedByBlack & (1ULL << square)) != 0;
     } else {
-        return (board.getBoard() & allSquaresAttackedByWhite);
+        return (allSquaresAttackedByWhite & (1ULL << square)) != 0;
     }
 }
 
-void ChessBoard::generateMoves(Color color, vector<Move>& moveList) {
+
+void ChessBoard::generateMoves(Color color, vector<Move>& moveList) 
+{
     moveList.clear();
     populatePawnCaptures(color, lastMove, moveList);
     populateQuietPawnMoves(color, moveList);
@@ -843,9 +863,11 @@ void ChessBoard::generateMoves(Color color, vector<Move>& moveList) {
     populateQueenMoves(color, moveList,0);
     populateRookMoves(color, moveList,0);
     populateKingMoves(color, moveList,0);
+    
 }
 
-void ChessBoard::generateCaptureMoves(Color color, vector<Move>& moveList){
+void ChessBoard::generateCaptureMoves(Color color, vector<Move>& moveList)
+{
     moveList.clear();
     populatePawnCaptures(color, lastMove, moveList);
     populateKnightMoves(color, moveList, 1);
@@ -855,51 +877,48 @@ void ChessBoard::generateCaptureMoves(Color color, vector<Move>& moveList){
     populateKingMoves(color, moveList, 1);
 
 }
-
-bool ChessBoard::makeAMove(Move &move) {
-
+bool ChessBoard::makeAMove(Move &move) 
+{
     currentHash = updateHash(currentHash, move);
+    repetitionTable[currentHash]++;
+
     removePiece(move.endSquare);
     removePiece(move.startingSquare);
-    if(move.isPromotion){
+    
+    if (move.isPromotion) {
         placePiece(move.endSquare, Piece(move.movingPieceColor, move.promotedPieceType));
-    }
-    else{
+    } else {
         placePiece(move.endSquare, Piece(move.movingPieceColor, move.movingPieceType));
     }
     
-    if(move.movingPieceType == KING){
-        if(move.movingPieceColor == WHITE){
+    // Handle special moves
+    if (move.movingPieceType == KING) {
+        if (move.movingPieceColor == WHITE) {
             canWhiteCastleKingSide = 0;
             canWhiteCastleQueenSide = 0;
-        }
-        else{
+        } else {
             canBlackCastleKingSide = 0;
             canBlackCastleQueenSide = 0;
         }
     }  
 
     enPassantFile = -1;
-
-    if(enPassantEnable.size()){
-        for(auto m : enPassantEnable){
-            if(m == move){
+    if (enPassantEnable.size()) {
+        for (auto m : enPassantEnable) {
+            if (m == move) {
                 enPassantFile = move.endSquare % 8;
             }
         }
     }
 
-    if(move.movingPieceType == ROOK){
-        if(move.startingSquare == 56){
+    if (move.movingPieceType == ROOK) {
+        if (move.startingSquare == 56) {
             canBlackCastleKingSide = 0;
-        }
-        else if(move.startingSquare == 63){
+        } else if (move.startingSquare == 63) {
             canBlackCastleQueenSide = 0;
-        }
-        else if(move.startingSquare == 0){
+        } else if (move.startingSquare == 0) {
             canWhiteCastleKingSide = 0;
-        }
-        else if(move.startingSquare == 7){
+        } else if (move.startingSquare == 7) {
             canWhiteCastleQueenSide = 0;
         }
     }
@@ -907,14 +926,11 @@ bool ChessBoard::makeAMove(Move &move) {
     if (move.capturedPiece.type == ROOK) {
         if (move.endSquare == 56) {
             canBlackCastleKingSide = 0;
-        } 
-        else if (move.endSquare == 63) {
+        } else if (move.endSquare == 63) {
             canBlackCastleQueenSide = 0;
-        } 
-        else if (move.endSquare == 0) {
+        } else if (move.endSquare == 0) {
             canWhiteCastleKingSide = 0;
-        } 
-        else if (move.endSquare == 7) {
+        } else if (move.endSquare == 7) {
             canWhiteCastleQueenSide = 0;
         }
     }
@@ -926,15 +942,26 @@ bool ChessBoard::makeAMove(Move &move) {
         handleCastling(move.startingSquare, move.endSquare, move.movingPieceColor);
     }
 
-
     updateBoards();
 
-    if(isSquareAttacked((move.movingPieceColor == WHITE ? BitBoard(whiteBoards[5]).LS1B() : BitBoard(blackBoards[5]).LS1B()), move.movingPieceColor)){
+    int kingSquare = (move.movingPieceColor == WHITE ? BitBoard(whiteBoards[5]).LS1B() : BitBoard(blackBoards[5]).LS1B());
+    bool kingInCheck = isSquareAttacked(kingSquare, move.movingPieceColor);
+
+    if (kingInCheck) {
         undoMove();
-        return false;
+        return false; 
     }
 
-    if(move.capturedPiece != Piece()){
+    kingSquare = (move.movingPieceColor == BLACK ? BitBoard(whiteBoards[5]).LS1B() : BitBoard(blackBoards[5]).LS1B());
+    kingInCheck = isSquareAttacked(kingSquare, move.movingPieceColor);
+
+    if (kingInCheck) {
+        isThereCheck = 1;
+    } else {
+        isThereCheck = 0;
+    }
+
+    if (move.capturedPiece != Piece()) {
         captures++;
     }
 
@@ -944,11 +971,19 @@ bool ChessBoard::makeAMove(Move &move) {
     return true;
 }
 
+
 void ChessBoard::undoMove() {
     restoreBoardState();
 }
 
-void ChessBoard::saveBoardState() {
+bool ChessBoard::makeNullMove(){
+    currentHash ^= turnKey;
+    enPassantFile = -1;
+    return true;
+}
+
+void ChessBoard::saveBoardState() 
+{
     BoardState state;
     state.whiteBoards = whiteBoards;
     state.blackBoards = blackBoards;
@@ -968,7 +1003,8 @@ void ChessBoard::saveBoardState() {
     boardStateStack.push(state);
 }
 
-void ChessBoard::restoreBoardState() {
+void ChessBoard::restoreBoardState() 
+{
     if (!boardStateStack.empty()) {
         BoardState state = boardStateStack.top();
         boardStateStack.pop();
@@ -987,6 +1023,7 @@ void ChessBoard::restoreBoardState() {
         allSquaresAttackedByBlack = state.allSquaresAttackedByBlack;
         lastMove = state.lastMove;
         currentHash = state.key;
+        repetitionTable[currentHash]--;
     }
 }
 
@@ -1000,7 +1037,8 @@ void ChessBoard::updateBoards()
 
 }
 
-void ChessBoard::removePiece(int square) {
+void ChessBoard::removePiece(int square) 
+{
     unsigned long long mask = 1ULL << square;
 
     for(auto &board : whiteBoards){
@@ -1012,7 +1050,8 @@ void ChessBoard::removePiece(int square) {
     }
 }
 
-void ChessBoard::placePiece(int square, Piece piece) {
+void ChessBoard::placePiece(int square, Piece piece) 
+{
     if (piece.color == WHITE) {
         switch (piece.type) {
             case PAWN:
@@ -1062,7 +1101,8 @@ void ChessBoard::placePiece(int square, Piece piece) {
     }
 }
 
-void ChessBoard::handleEnpassant(int endSquare, Color color) {
+void ChessBoard::handleEnpassant(int endSquare, Color color) 
+{
     int capturedPawnSquare;
     if (color == WHITE) {
         capturedPawnSquare = endSquare - 8;
@@ -1072,32 +1112,35 @@ void ChessBoard::handleEnpassant(int endSquare, Color color) {
     removePiece(capturedPawnSquare);
 }
 
-void ChessBoard::handleCastling(int startSquare, int endSquare, Color color) {
-    if (startSquare == E1 && endSquare == G1) { // White kingside castling
+void ChessBoard::handleCastling(int startSquare, int endSquare, Color color) 
+{
+    if (startSquare == E1 && endSquare == G1) { //White kingside castling
         removePiece(H1);
         placePiece(F1, Piece(WHITE, ROOK));
     } 
-    else if (startSquare == E1 && endSquare == C1) { // White queenside castling
+    else if (startSquare == E1 && endSquare == C1) { //White queenside castling
         removePiece(A1);
         placePiece(D1, Piece(WHITE, ROOK));
 
     } 
-    else if (startSquare == E8 && endSquare == G8) { // Black kingside castling
+    else if (startSquare == E8 && endSquare == G8) { //Black kingside castling
         removePiece(H8);
         placePiece(F8, Piece(BLACK, ROOK));
     } 
-    else if (startSquare == E8 && endSquare == C8) { // Black queenside castling
+    else if (startSquare == E8 && endSquare == C8) { //Black queenside castling
         removePiece(A8);
         placePiece(D8, Piece(BLACK, ROOK));
     }
 }
 
-void ChessBoard::handlePromotion(int endSquare, Color color, PieceType t) {
+void ChessBoard::handlePromotion(int endSquare, Color color, PieceType t) 
+{
     removePiece(endSquare);
     placePiece(endSquare, Piece(color, t));
 }
 
-void ChessBoard::perft(int depth) {
+void ChessBoard::perft(int depth) 
+{
     if (depth == 0) {
         nodes++;
         return;
@@ -1115,7 +1158,6 @@ void ChessBoard::perft(int depth) {
         restoreBoardState();
     }
 }
-#include <conio.h> 
 
 void ChessBoard::perftTest(int depth, int intialDepth)
 {
@@ -1137,7 +1179,8 @@ void ChessBoard::perftTest(int depth, int intialDepth)
     }
 }
 
-void ChessBoard::setBoardFromFEN(const std::string& fen) {
+void ChessBoard::setBoardFromFEN(const std::string& fen) 
+{
     std::istringstream iss(fen);
     std::string boardPart, activeColor, castlingAvailability, enPassantTarget, halfmoveClock, fullmoveNumber;
     iss >> boardPart >> activeColor >> castlingAvailability >> enPassantTarget >> halfmoveClock >> fullmoveNumber;
@@ -1201,7 +1244,8 @@ void ChessBoard::clearBitForAllPieces(int square, Color color)
     }
 }
 
-void ChessBoard::printChessBoard() {
+void ChessBoard::printChessBoard() 
+{
     Piece currentPiece;
     for (int row = 7; row >= 0; row--) {
         for (int col = 7; col >= 0; col--) {
@@ -1301,7 +1345,8 @@ char ChessBoard::pieceToChar(Piece piece)
 //     }
 // }
 
-void ChessBoard::initializeHashKeys() {
+void ChessBoard::initializeHashKeys() 
+{
     for (int color = 0; color < 2; ++color) {
         for (int piece = 0; piece < 6; ++piece) {
             for (int square = 0; square < 64; ++square) {
@@ -1320,7 +1365,8 @@ void ChessBoard::initializeHashKeys() {
         enPassantKeys[i] = randomUInt64();
     }
 }
-unsigned long long ChessBoard::generateInitialHash() const {
+unsigned long long ChessBoard::generateInitialHash() const 
+{
     unsigned long long hash = 0;
 
     for (int square = 0; square < 64; ++square) {
@@ -1354,7 +1400,8 @@ unsigned long long ChessBoard::generateInitialHash() const {
     return hash;
 }
 
-unsigned long long ChessBoard::updateHash(unsigned long long hash, const Move& move) const {
+unsigned long long ChessBoard::updateHash(unsigned long long hash, const Move& move) const 
+{
     hash ^= zorbristTable[move.movingPieceColor][move.movingPieceType][move.startingSquare];
 
     if (move.capturedPiece.type != EMPTY) {
@@ -1459,3 +1506,92 @@ unsigned long long ChessBoard::updateHash(unsigned long long hash, const Move& m
 
     return hash;
 }
+
+void ChessBoard::initializeFileMasks()
+{
+    for(int file = 0; file < 8; file++) {
+        for (int rank = 0; rank < 8; ++rank) {
+            int square = rank*8 + file; 
+            fileMasks[square] = (H_FILE << file);
+        }
+    }
+}
+void ChessBoard::initiliazeRankMasks()
+{
+    for(int rank = 0; rank < 8; rank++) {
+        for (int file = 0; file < 8; ++file) {
+            int square = rank * 8 + file; 
+            rankMasks[square] = (BOTTOM_ROW << (8*rank));
+        }
+    }
+}
+
+void ChessBoard::initializeIsolatedMasks()
+{
+    for(int rank = 0; rank < 8; rank++){
+        for(int file = 0; file < 8; file++){
+            int square = rank * 8 + file;
+            if(file == 0){
+                isolatedMasks[square] = fileMasks[square + 1];
+            }
+            else if(file == 7){
+                isolatedMasks[square] = fileMasks[square - 1];
+            }
+            else{
+                isolatedMasks[square] = fileMasks[square + 1] | fileMasks[square - 1];
+            }
+        }
+    }
+}
+
+
+void ChessBoard::initializeBlackPassedPawnMasks()
+{
+    for(int rank = 0; rank < 8; rank++){
+        for(int file = 0; file < 8; file++){
+            int square = rank * 8 + file;
+            if(file == 0){
+                blackPassedMasks[square] = fileMasks[square + 1] | fileMasks[square];
+            }
+            else if(file == 7){
+                blackPassedMasks[square] = fileMasks[square - 1] | fileMasks[square];
+            }
+            else{
+                blackPassedMasks[square] = fileMasks[square + 1] | fileMasks[square - 1] | fileMasks[square];
+            }
+            for(int i = 0; i < (8 - rank); i++){
+                blackPassedMasks[square] &= ~rankMasks[(7-i) *8 + file];
+            }
+        }
+    }
+}
+
+
+void ChessBoard::initializeWhitePassedPawnMasks()
+{
+    for(int rank = 0; rank < 8; rank++){
+        for(int file = 0; file < 8; file++){
+            int square = rank * 8 + file;
+            if(file == 0){
+                whitePassedMasks[square] = fileMasks[square + 1] | fileMasks[square];
+            }
+            else if(file == 7){
+                whitePassedMasks[square] = fileMasks[square - 1] | fileMasks[square];
+            }
+            else{
+                whitePassedMasks[square] = fileMasks[square + 1] | fileMasks[square - 1] | fileMasks[square];
+            }
+            for(int i = 0; i < rank + 1; i++){
+                whitePassedMasks[square] &= ~rankMasks[i * 8 + file];
+            }
+        }
+    }
+}
+
+// bool ChessBoard::isThreefoldRepetition(const Move &move) const {
+//     unsigned long long newHash = updateHash(currentHash, move);
+    
+//     return repetitionTable.count(newHash) > 0 && repetitionTable.at(newHash) >= 2;
+// }
+
+

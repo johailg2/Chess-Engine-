@@ -38,11 +38,11 @@ add_executable(chess_engine ${SOURCE_FILES})
 target_link_libraries(chess_engine ${Python3_LIBRARIES})
 
 # Create the Python extension module
-#add_library(chessBoardWrap MODULE ${SOURCE_FILES})
+add_library(chessBoardWrap MODULE ${SOURCE_FILES})
 
 # Set properties for the Python extension target
-#set_target_properties(chessBoardWrap PROPERTIES PREFIX "")
-#set_target_properties(chessBoardWrap PROPERTIES SUFFIX ".pyd")
+set_target_properties(chessBoardWrap PROPERTIES PREFIX "")
+set_target_properties(chessBoardWrap PROPERTIES SUFFIX ".pyd")
 
 # Link the Python extension target with the necessary libraries
-#target_link_libraries(chessBoardWrap PRIVATE pybind11::module ${Python3_LIBRARIES})
+target_link_libraries(chessBoardWrap PRIVATE pybind11::module ${Python3_LIBRARIES})

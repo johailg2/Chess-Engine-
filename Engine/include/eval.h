@@ -1,7 +1,6 @@
 #ifndef EVAL_H
 #define EVAL_H
 
-
 #include "../include/chessboard.h"
 #include "../include/attackTables.h"
 #include "../include/bitboards.h"
@@ -27,22 +26,41 @@ struct SearchResult {
     vector<Move> pv;
 };
 
+enum BoundFlag{
+    EXACT,
+    UPPER,
+    LOWER
+};
+
+struct TranspositionTableEntry{
+    unsigned long long hash;
+    int evaluatedDepth;
+    int positionScore;
+    vector<Move> pv;
+    Move bestMove;
+    BoundFlag moveFlag;
+};
+
 class Evaluation{
 
 public:
-    Evaluation(int max){
+    Evaluation(){
         initializeHistoryMoves();
         initializeKillerMoves();
         initializePieceSquareTables();
         initializeMVVLVA();
-        maxDepth = max;
     };
-    static int evaluate(const ChessBoard& chessBoard);
+    int evaluate(const ChessBoard& chessBoard);
     static void initializeMVVLVA();
     int scoreMove(Move& move, int depth, const vector<Move>& pv);
     SearchResult iterativeDeepeningSearch(ChessBoard& board, int depth, bool player);
     void printPVTable(int depth);
     SearchResult minMax(ChessBoard& board, int depth, int bestEvaluatedWhiteScore, int bestEvaluatedBlackScore, bool player, vector<Move>& pv);
+    unordered_map<unsigned long long, vector<TranspositionTableEntry>> transpositionTable;
+    int structuralEvaluation(const ChessBoard& board, bool isMiddleGame);
+    int mobilityAndCenterControl(const ChessBoard& board, bool isMiddleGame);
+    int kingSafety(const ChessBoard& board, bool isMiddelGame);
+    int evaluateOpenFiles(const ChessBoard& board, bool isMiddleGame);
 
 
 private:
@@ -51,17 +69,18 @@ private:
     static int evaluateMaterial(const ChessBoard& board, bool gamePhase);
     static void initializePieceSquareTables();
     static int evaluatePieceSquareTables(const ChessBoard& board, bool gamePhase);
-    static int evaluateMobility(const ChessBoard& board);
-    static int evaluateKingSafety(const ChessBoard& board);
-    static int evaluatePawnStructure(const ChessBoard& board);
     int quiescenceSearch(ChessBoard &board, int alpha, int beta, bool player);
     void sortMove(vector<Move>& moveList, int depth,const vector<Move>& pv);
     void initializeKillerMoves();
     void initializeHistoryMoves();
     void updateKillerMoves(int depth, const Move& move);
     void updateHistoryMoves(int depth, const Move& move);
-    void initializePVTable();
-    void updatePVTable(int depth, const Move& move);
+    void clearTranspositionTable();
+    void insertToTable(unsigned long long hash, TranspositionTableEntry &entry);
+    bool entryRetrieval(unsigned long long, TranspositionTableEntry&,int, int, int) const;
+    int checkMate;
+    bool staleMate;
+
 };
 
 

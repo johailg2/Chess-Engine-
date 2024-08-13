@@ -34,5 +34,41 @@
   "command": "C:\\Users\\johai\\GCC\\bin\\c++.exe -I\"C:/Users/johai/Desktop/Chess Engine Attempt/include\" -IC:/Users/johai/AppData/Local/Programs/Python/Python312/include -IC:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/include -g -std=gnu++17 -o CMakeFiles\\chess_engine.dir\\Engine\\Src\\eval.cpp.obj -c \"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\eval.cpp\"",
   "file": "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\eval.cpp",
   "output": "CMakeFiles\\chess_engine.dir\\Engine\\Src\\eval.cpp.obj"
+},
+{
+  "directory": "C:/Users/johai/Desktop/Chess Engine Attempt/build",
+  "command": "C:\\Users\\johai\\GCC\\bin\\c++.exe -DchessBoardWrap_EXPORTS -I\"C:/Users/johai/Desktop/Chess Engine Attempt/include\" -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/include -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/include -g -std=gnu++17 -o CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\main.cpp.obj -c \"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\main.cpp\"",
+  "file": "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\main.cpp",
+  "output": "CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/johai/Desktop/Chess Engine Attempt/build",
+  "command": "C:\\Users\\johai\\GCC\\bin\\c++.exe -DchessBoardWrap_EXPORTS -I\"C:/Users/johai/Desktop/Chess Engine Attempt/include\" -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/include -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/include -g -std=gnu++17 -o CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\bitboards.cpp.obj -c \"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\bitboards.cpp\"",
+  "file": "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\bitboards.cpp",
+  "output": "CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\bitboards.cpp.obj"
+},
+{
+  "directory": "C:/Users/johai/Desktop/Chess Engine Attempt/build",
+  "command": "C:\\Users\\johai\\GCC\\bin\\c++.exe -DchessBoardWrap_EXPORTS -I\"C:/Users/johai/Desktop/Chess Engine Attempt/include\" -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/include -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/include -g -std=gnu++17 -o CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\chessboard.cpp.obj -c \"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\chessboard.cpp\"",
+  "file": "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\chessboard.cpp",
+  "output": "CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\chessboard.cpp.obj"
+},
+{
+  "directory": "C:/Users/johai/Desktop/Chess Engine Attempt/build",
+  "command": "C:\\Users\\johai\\GCC\\bin\\c++.exe -DchessBoardWrap_EXPORTS -I\"C:/Users/johai/Desktop/Chess Engine Attempt/include\" -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/include -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/include -g -std=gnu++17 -o CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\wrapper.cpp.obj -c \"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\wrapper.cpp\"",
+  "file": "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\wrapper.cpp",
+  "output": "CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\wrapper.cpp.obj"
+},
+{
+  "directory": "C:/Users/johai/Desktop/Chess Engine Attempt/build",
+  "command": "C:\\Users\\johai\\GCC\\bin\\c++.exe -DchessBoardWrap_EXPORTS -I\"C:/Users/johai/Desktop/Chess Engine Attempt/include\" -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/include -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/include -g -std=gnu++17 -o CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\attackTables.cpp.obj -c \"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\attackTables.cpp\"",
+  "file": "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\attackTables.cpp",
+  "output": "CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\attackTables.cpp.obj"
+},
+{
+  "directory": "C:/Users/johai/Desktop/Chess Engine Attempt/build",
+  "command": "C:\\Users\\johai\\GCC\\bin\\c++.exe -DchessBoardWrap_EXPORTS -I\"C:/Users/johai/Desktop/Chess Engine Attempt/include\" -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/include -isystem C:/Users/johai/AppData/Local/Programs/Python/Python312/Lib/site-packages/pybind11/include -g -std=gnu++17 -o CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\eval.cpp.obj -c \"C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\eval.cpp\"",
+  "file": "C:\\Users\\johai\\Desktop\\Chess Engine Attempt\\Engine\\Src\\eval.cpp",
+  "output": "CMakeFiles\\chessBoardWrap.dir\\Engine\\Src\\eval.cpp.obj"
 }
 ]
