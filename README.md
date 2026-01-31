@@ -32,7 +32,7 @@ I recently refactored the legacy monolithic codebase into a modular design to im
 * **Modernization:** Updated the build system (`setup.py`) to support C++17 standards.
 * **AI-Assisted Optimization:** Leveraged AI tools to identify platform-specific bottlenecks (like `__builtin_popcountll` on Windows) and implement cross-platform compatibility layers.
 
-## 📦 How to Build
+## How to Build
 1.  **Install Dependencies:**
     ```bash
     pip install pybind11 pygame
