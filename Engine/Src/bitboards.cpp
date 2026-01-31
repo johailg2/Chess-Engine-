@@ -1,5 +1,5 @@
-#include "../include/bitboards.h"
-#include "../include/chessboard.h"
+#include "../headers/bitboards.h"
+#include "../headers/chessboard.h"
 
 BitBoard::BitBoard() : bitBoard(0ULL) {}
 

@@ -1,10 +1,10 @@
 // wrapper.cpp
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include "../include/chessboard.h"
-#include "../include/attackTables.h"
-#include "../include/bitboards.h"
-#include "../include/eval.h"
+#include "../headers/chessboard.h"
+#include "../headers/attackTables.h"
+#include "../headers/bitboards.h"
+#include "../headers/eval.h"
 
 namespace py = pybind11;
 
@@ -46,6 +46,7 @@ PYBIND11_MODULE(chessBoardWrap, m) {
 
     py::class_<BitBoard>(m, "BitBoard")
         .def(py::init<>())
+        .def(py::init<unsigned long long>())
         .def("getBit", &BitBoard::getBit)
         .def("flipBit", &BitBoard::flipBit)
         .def("setBit", &BitBoard::setBit)
