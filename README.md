@@ -24,7 +24,7 @@ This project demonstrates bitboard-based move generation, custom evaluation heur
 * **Pawn Structure Analysis:** Evaluates isolated, doubled, and passed pawns with rank-dependent bonuses.
 * **Mobility & Center Control:** dynamic scoring based on available moves and control of the critical D4/D5/E4/E5 squares.
 
-## 🛠️ Refactoring
+## Refactoring
 I recently refactored the legacy monolithic codebase into a modular design to improve readability and maintainability. 
 
 **Key improvements:**
